@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import Books from './components/Books';
-import Login from './components/Login';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 import apiClient from './services/api';
 
 const App = () => {
@@ -36,6 +37,9 @@ const App = () => {
             <li className="nav-item">
               {authLink}
             </li>
+            <li>
+              <NavLink to='/register' className="nav-link">Register</NavLink>
+            </li>
           </ul>
         </div>
       </nav>
@@ -46,6 +50,9 @@ const App = () => {
           </Route>
           <Route path='/login' render={props => (
             <Login {...props} login={login} />
+          )} />
+          <Route path='/register' render={props => (
+            <Register {...props} />
           )} />
         </Switch>
       </div>
