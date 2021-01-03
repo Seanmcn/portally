@@ -14,10 +14,12 @@ sites:
         map: api.circle.devel
         to: /home/vagrant/code/backend/public
     -
-        map: circle.devel
-        to: /home/vagrant/code/frontend/public
+        map: build.circle.devel
+        to: /home/vagrant/code/frontend/build
+
 databases:
     - circle
+
 features:
     -
         mariadb: false
