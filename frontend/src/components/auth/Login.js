@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import apiClient from '../../services/api';
+import apiClient from '../../utils/api';
 
 const Login = (props) => {
   const [email, setEmail] = React.useState('');
