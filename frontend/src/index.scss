@@ -1,0 +1,21 @@
+// Initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/functions";
+
+// Custom Settings
+$family-sans-serif: "Nunito", sans-serif;
+//$primary: $purple;
+//$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: #f4f4f4;
+
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Rest of Bulma
+@import '../node_modules/bulma/bulma';
+
