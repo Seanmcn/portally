@@ -23,8 +23,7 @@ const Login = (props) => {
           setToHome(true);
         } else {
           setUnknownError(true);
-          console.error('Login failed?');
-          console.error('response:', response);
+          console.error('Login failed:', response);
         }
       }).catch(error => {
         if (error.response && error.response.status === 422) {
