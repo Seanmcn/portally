@@ -40,33 +40,86 @@ const Login = (props) => {
   }
   return (
     <div>
-      <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input
-            type="email"
-            name="email"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="password"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {authError ? <div className="alert alert-danger">Credentials not recognised. Please try again.</div> : null}
-        {unknownError ? <div className="alert alert-danger">There was an error submitting your details.</div> : null}
-        <button type="submit" className="btn btn-primary">Login</button>
+
+      <form onSubmit={handleSubmit} className={'box'}>
+
+
+        <div className="field" >
+          <label className="label" >Email</label >
+          <div className="control has-icons-left has-icons-right" >
+            <input
+              className={'input' +
+              (authError || unknownError ? ' is-danger' : '')}
+              name="email"
+              type="email"
+              placeholder="Email input"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required />
+            <span className="icon is-small is-left" >
+              <i className="fas fa-envelope" />
+           </span >
+            {(authError || unknownError) &&
+            <span className="icon is-small is-right" >
+                <i className="fas fa-exclamation-triangle" />
+            </span >
+            }
+          </div >
+        </div >
+
+
+        <div className="field" >
+          <label className="label" >Password</label >
+          <div className="control has-icons-right" >
+            <input
+              type="password"
+              name="password"
+              className={"input" + (authError || unknownError ? ' is-danger' : '')}
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            {(authError || unknownError) &&
+            <span className="icon is-small is-right" >
+                <i className="fas fa-exclamation-triangle" />
+            </span >
+            }
+          </div >
+        </div >
+
+
+        {/*<div className="field">*/}
+        {/*  <input*/}
+        {/*    type="email"*/}
+        {/*    name="email"*/}
+        {/*    className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}*/}
+        {/*    placeholder="Email"*/}
+        {/*    value={email}*/}
+        {/*    onChange={e => setEmail(e.target.value)}*/}
+        {/*    required*/}
+        {/*  />*/}
+        {/*</div>*/}
+        {/*<div className="form-group">*/}
+        {/*  <input*/}
+        {/*    type="password"*/}
+        {/*    name="password"*/}
+        {/*    className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}*/}
+        {/*    placeholder="Password"*/}
+        {/*    value={password}*/}
+        {/*    onChange={e => setPassword(e.target.value)}*/}
+        {/*    required*/}
+        {/*  />*/}
+        {/*</div>*/}
+
+        {authError ? <p className="help is-danger">Credentials not recognised. Please try again.</p> : null}
+        {unknownError ? <p className="help is-danger">There was an error submitting your details.</p> : null}
+        <div className="control" >
+          <button type="submit"  className="button is-link" >Login</button >
+        </div >
+
+
+
       </form>
     </div>
   );
