@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import apiClient from '../../utils/api';
 
 const Login = (props) => {
@@ -19,7 +19,8 @@ const Login = (props) => {
         password: password
       }).then(response => {
         if (response.status === 204) {
-          props.login();
+          // props.login();
+          console.log('logged in!');
           setToHome(true);
         } else {
           setUnknownError(true);
@@ -39,10 +40,8 @@ const Login = (props) => {
     return <Redirect to='/' />
   }
   return (
-    <div>
-
-      <form onSubmit={handleSubmit} className={'box'}>
-
+    <div className={'box'}>
+      <form onSubmit={handleSubmit}>
 
         <div className="field" >
           <label className="label" >Email</label >
@@ -52,7 +51,7 @@ const Login = (props) => {
               (authError || unknownError ? ' is-danger' : '')}
               name="email"
               type="email"
-              placeholder="Email input"
+              placeholder="Your email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required />
@@ -75,7 +74,7 @@ const Login = (props) => {
               type="password"
               name="password"
               className={"input" + (authError || unknownError ? ' is-danger' : '')}
-              placeholder="Password"
+              placeholder="Your password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
@@ -88,39 +87,14 @@ const Login = (props) => {
           </div >
         </div >
 
-
-        {/*<div className="field">*/}
-        {/*  <input*/}
-        {/*    type="email"*/}
-        {/*    name="email"*/}
-        {/*    className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}*/}
-        {/*    placeholder="Email"*/}
-        {/*    value={email}*/}
-        {/*    onChange={e => setEmail(e.target.value)}*/}
-        {/*    required*/}
-        {/*  />*/}
-        {/*</div>*/}
-        {/*<div className="form-group">*/}
-        {/*  <input*/}
-        {/*    type="password"*/}
-        {/*    name="password"*/}
-        {/*    className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}*/}
-        {/*    placeholder="Password"*/}
-        {/*    value={password}*/}
-        {/*    onChange={e => setPassword(e.target.value)}*/}
-        {/*    required*/}
-        {/*  />*/}
-        {/*</div>*/}
-
         {authError ? <p className="help is-danger">Credentials not recognised. Please try again.</p> : null}
         {unknownError ? <p className="help is-danger">There was an error submitting your details.</p> : null}
         <div className="control" >
           <button type="submit"  className="button is-link" >Login</button >
         </div >
-
-
-
       </form>
+
+      <p className="help">Don't have an account? <Link to="/register">Register</Link></p>
     </div>
   );
 };
