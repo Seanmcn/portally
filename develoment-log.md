@@ -1,3 +1,9 @@
+# 20201-02-27
+- https://boxy-svg.com/ useful for prototype logo in SVG.
+- Worked on supporting different layouts for authenticated vs non-authenticated users.
+- Worked on login page design.
+- Starting to think if I should add Redux in at this point or wait.
+
 # 2021-02-26
 - Most of this evening was spent sorting out the work from 2021-01-04 into nice commits.
 - Have resolved issues between osx / windows local environments
