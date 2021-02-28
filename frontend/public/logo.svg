@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="250" y1="179.206" x2="250" y2="320.794" id="gradient-0" gradientTransform="matrix(1.200667, 0, 0, 1.200667, -50.166676, -50.166676)">
+      <stop offset="0" style="stop-color: rgba(240, 174, 33, 1)"/>
+      <stop offset="1" style="stop-color: rgba(160, 113, 11, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="755.923" y1="98.116" x2="755.923" y2="374.824" id="gradient-1">
+      <stop offset="0" style="stop-color: rgba(64, 119, 201, 1)"/>
+      <stop offset="1" style="stop-color: rgba(36, 72, 127, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="455" y1="309.699" x2="455" y2="656.326" id="gradient-2">
+      <stop offset="0" style="stop-color: rgba(69, 168, 234, 1)"/>
+      <stop offset="1" style="stop-color: rgba(20, 116, 181, 1)"/>
+    </linearGradient>
+  </defs>
+  <path d="M 455 483 m -173.241 0 a 173.241 173.241 0 1 0 346.482 0 a 173.241 173.241 0 1 0 -346.482 0 Z M 455 483 m -103.944 0 a 103.944 103.944 0 0 1 207.888 0 a 103.944 103.944 0 0 1 -207.888 0 Z" style="fill: url(#gradient-2);" transform="matrix(-0.544191, 0.838961, -0.838961, -0.544191, 902.835593, 131.123764)" bx:shape="ring 455 483 103.944 103.944 173.241 173.241 1@8c81d93d"/>
+  <path d="M 755.923 236.47 m -138.354 0 a 138.354 138.354 0 1 0 276.708 0 a 138.354 138.354 0 1 0 -276.708 0 Z M 755.923 236.47 m -83.012 0 a 83.012 83.012 0 0 1 166.024 0 a 83.012 83.012 0 0 1 -166.024 0 Z" style="paint-order: fill; fill: url(#gradient-1);" transform="matrix(-0.714073, 0.700071, -0.700071, -0.714073, 955.330147, -110.343001)" bx:shape="ring 755.923 236.47 83.012 83.012 138.354 138.354 1@42ad4e6c"/>
+  <circle style="fill: url(#gradient-0); stroke: rgb(255, 255, 255); paint-order: fill; stroke-width: 2px;" cx="250" cy="250" r="85"/>
+</svg>
