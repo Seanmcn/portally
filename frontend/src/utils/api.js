@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const apiClient = axios.create({
+const api = axios.create({
   baseURL: 'https://api.circle.devel',
   withCredentials: true,
 });
 
-export default apiClient;
+export default api;

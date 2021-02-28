@@ -1,4 +1,8 @@
-# 20201-02-27
+#2021-02-28
+- https://mobx.js.org/about-this-documentation.html
+- After much reading about MobX vs Redux, I've decided to go with MobX. Seems marginally better / easier to get setup.
+
+# 2021-02-27
 - https://boxy-svg.com/ useful for prototype logo in SVG.
 - Worked on supporting different layouts for authenticated vs non-authenticated users.
 - Worked on login page design.
