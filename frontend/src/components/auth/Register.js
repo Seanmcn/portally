@@ -1,107 +1,124 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import apiClient from '../../utils/api';
+import {inject, observer} from "mobx-react";
 
-const Register = (props) => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [initialPassword, setInitialPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
-  const [toHome, setToHome] = React.useState(false);
-  const [authError, setAuthError] = React.useState(false);
-  const [errorMessages, setErrorMessages] = React.useState([]);
-  const [unknownError, setUnknownError] = React.useState(false);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAuthError(false);
-    setUnknownError(false);
-    apiClient.get('/sanctum/csrf-cookie')
-    .then(response => {
-      apiClient.post('/register', {
-        name: name,
-        email: email,
-        password: initialPassword
-      }).then(response => {
-        console.log(response);
-        // if (response.status === 204) {
-        //   props.login();
-        //   setToHome(true);
-        // } else {
-        //   setUnknownError(true);
-        //   console.error('Login failed?');
-        //   console.error('response:', response);
-        // }
-      }).catch(error => {
-        if (error.response && error.response.status === 422) {
-          setAuthError(true);
-          for (let key of Object.keys(error.response.data.errors)) {
-            setErrorMessages(errorMessages.concat(error.response.data.errors[key]))
-          }
-        } else {
-          setUnknownError(true);
-          console.error(error);
-        }
-      });
-    });
-  }
-  if (toHome === true) {
-    return <Redirect to='/' />
-  }
-  return (
-    <div>
-      <h3>Register</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input
-            type="text"
-            name="name"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            name="email"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="initialPassword"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Password"
-            value={initialPassword}
-            onChange={e => setInitialPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="confirmPassword"
-            className={"form-control" + (authError || unknownError ? ' is-invalid' : '')}
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
-            required
-            autoComplete="new-password"
-          />
-        </div>
-        {authError ? <div className="alert alert-danger">{errorMessages}</div> : null}
-        {unknownError ? <div className="alert alert-danger">There was an error submitting your details.</div> : null}
-        <button type="submit" className="btn btn-primary">Register</button>
-      </form>
-    </div>
-  );
-};
+class Register extends React.Component {
 
-export default Register;
+    handleNameChange = e => {
+        this.props.AuthStore.setName(e.target.value);
+    }
+
+    handleEmailChange = e => {
+        this.props.AuthStore.setEmail(e.target.value);
+    };
+
+    handleDateOfBirthChange = e => {
+        this.props.AuthStore.setDateOfBirth(e.target.value);
+    }
+
+    handlePasswordChange = e => {
+        this.props.AuthStore.setPassword(e.target.value);
+    };
+
+    handleConfirmPasswordChange = e => {
+        this.props.AuthStore.setConfirmPassword(e.target.value)
+    }
+
+    handleSubmitForm = e => {
+        e.preventDefault();
+        // todo: check form is valid before??
+        this.props.AuthStore.register();
+    };
+
+    render() {
+        const {values, errors, inProgress} = this.props.AuthStore;
+        return (
+            <form onSubmit={this.handleSubmitForm}>
+
+                <div className="field">
+                    <label className="label">Name</label>
+                    <div className="control">
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder="Your name"
+                            autoComplete="name"
+                            value={values.name}
+                            onChange={this.handleNameChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control has-icons-left has-icons-right">
+                        <input
+                            type="email"
+                            className="input"
+                            placeholder="Your email"
+                            value={values.email}
+                            onChange={this.handleEmailChange}
+                            autoComplete="email"
+                            required
+                        />
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-envelope"/>
+                        </span>
+                    </div>
+                </div>
+
+                <div className={"field"}>
+                    <label className="label">Date of Birth</label>
+                    <input
+                        type="date"
+                        className="input"
+                        value={values.dateOfBirth}
+                        onChange={this.handleDateOfBirthChange}
+                        autoComplete="bday"
+                        required
+                    />
+                </div>
+
+                <div className="field">
+                    <label className="label">Password</label>
+                        <input
+                            type="password"
+                            className="input"
+                            value={values.password}
+                            placeholder="Your password"
+                            onChange={this.handlePasswordChange}
+                            autoComplete="new-password"
+                            data-lpignore="true"
+                            required
+                        />
+                </div>
+
+                <div className="field">
+                    <label className="label">Confirm Password</label>
+                        <input
+                            type="password"
+                            className="input"
+                            placeholder="Confirm password"
+                            value={values.confirmPassword}
+                            onChange={this.handleConfirmPasswordChange}
+                            autoComplete="new-password"
+                            data-lpignore="true"
+                            required
+                        />
+                </div>
+
+                <div className="control">
+                    <button
+                        type="submit"
+                        className="button is-link"
+                        disabled={inProgress}
+                    >
+                        Register
+                    </button>
+                </div>
+            </form>
+
+        )
+    }
+}
+
+export default inject('AuthStore')(observer(Register));

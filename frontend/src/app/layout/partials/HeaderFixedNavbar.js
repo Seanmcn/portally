@@ -2,23 +2,14 @@ import React from 'react'
 
 class HeaderFixedNavbar extends React.Component {
 
-  state = {
-    isActive: false,
-  }
-
-  toggleNav = () => {
-    this.setState(prevState => ({
-      isActive: !prevState.isActive
-    }))
-  }
-
   render() {
     return (
       <div id="main-navbar" className="navbar is-fixed-top">
         <div className="container is-fluid">
           <div className="navbar-brand">
             <a href="/" className="navbar-item">
-              Logo
+              <img src={process.env.PUBLIC_URL + '/logo.svg'} alt="Logo of a circle"
+                   className={'navbarLogo'} />
             </a>
             <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
               <span aria-hidden="true"/>

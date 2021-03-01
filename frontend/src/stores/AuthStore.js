@@ -6,12 +6,19 @@ class AuthStore {
   errors = undefined;
 
   values = {
+    name: '',
     email: '',
+    dateOfBirth: '',
     password: '',
+    confirmPassword: ''
   };
 
   constructor () {
     makeAutoObservable(this)
+  }
+
+  setName(name) {
+    this.values.name = name;
   }
 
   setEmail(email) {
@@ -22,9 +29,20 @@ class AuthStore {
     this.values.password = password;
   }
 
+  setConfirmPassword(confirmPassword){
+    this.values.confirmPassword = confirmPassword;
+  }
+
+  setDateOfBirth(dateOfBirth) {
+    this.values.dateOfBirth = dateOfBirth;
+  }
+
   reset() {
+    this.values.name = ';'
     this.values.email = '';
+    this.values.dateOfBirth=''
     this.values.password = '';
+    this.values.confirmPassword = ''
   }
 
   login() {
@@ -52,6 +70,24 @@ class AuthStore {
   register() {
     this.inProgress = true;
     this.errors = undefined;
+
+    api.get('/sanctum/csrf-cookie')
+        .then(() => {
+              api.post('/register', {
+                email: this.values.email,
+                password: this.values.password,
+                name: this.values.name,
+                dateOfBirth : this.values.dateOfBirth,
+                confirmPassword : this.values.confirmPassword,
+              }).catch(action((err) => {
+                this.errors = err.message;
+              }))
+                  .finally(action(() => { this.inProgress = false; }));
+            }
+        ).catch(action((err) => {
+      console.log(err);
+      this.errors = err.message;
+    }));
   }
 
   logout() {

@@ -11,7 +11,9 @@ class Layout extends React.Component {
       <>
         <HelmetDefault />
         <Header />
-        <Router />
+        <section className='section' role={'main'} >
+            <Router />
+        </section>
         <Footer />
       </>
     )

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { inject, observer } from "mobx-react";
 
 class Login extends React.Component {
@@ -20,7 +19,7 @@ class Login extends React.Component {
   render() {
     const { values, errors, inProgress } = this.props.AuthStore;
     return(
-      <div className={'box'}>
+
         <form onSubmit={this.handleSubmitForm}>
 
           <div className="field" >
@@ -71,15 +70,13 @@ class Login extends React.Component {
           <div className="control" >
             <button
               type="submit"
-              className="btn btn-lg btn-primary pull-xs-right"
+              className="button is-link"
               disabled={inProgress}
             >
               Login</button >
           </div >
         </form>
 
-        <p className="help">Don't have an account? <Link to="/register">Register</Link></p>
-      </div>
     )
   }
 }
