@@ -1,4 +1,11 @@
-#2021-02-28
+# 2021-03-07
+- Lots done today, mainly surrounding login & registration 
+- Now have validation errors from backend appearing on the frontend.
+- Register, Login and Logout now working as I want.
+- Added ESlint to the project, as code formatting was becoming annoying, I've disabled a number of rules I'll re-enable later when I've sorted out the JS structure a bit more. 
+- Started work on forgot password functionality, should be fun to test locally.
+
+# 2021-02-28
 - https://mobx.js.org/about-this-documentation.html
 - After much reading about MobX vs Redux, I've decided to go with MobX. Seems marginally better / easier to get setup.
 
