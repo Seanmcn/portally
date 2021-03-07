@@ -4,6 +4,8 @@ import api from '../utils/api';
 class AuthStore {
   inProgress = false;
 
+  authenticated = false;
+
   errors = undefined;
 
   values = {
@@ -59,7 +61,7 @@ class AuthStore {
         }).catch(action((err) => {
           this.errors = err.message;
         }))
-          .finally(action(() => { this.inProgress = false; }));
+          .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
       }).catch(action((err) => {
       // todo: test what we get back on this failure
       // eslint-disable-next-line no-console
@@ -83,7 +85,7 @@ class AuthStore {
         }).catch(action((err) => {
           this.errors = err.response.data.errors;
         }))
-          .finally(action(() => { this.inProgress = false; }));
+          .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
       }).catch(action((err) => {
       // todo: test what we get back on this failure
       // eslint-disable-next-line no-console
@@ -92,8 +94,11 @@ class AuthStore {
       }));
   }
 
-  // eslint-disable-next-line class-methods-use-this
   logout() {
+    api.post('/logout', {
+    }).catch(action((err) => {
+      this.errors = err.response.data.errors;
+    })).finally(action(() => { this.inProgress = false; this.authenticated = false; }));
   }
 }
 

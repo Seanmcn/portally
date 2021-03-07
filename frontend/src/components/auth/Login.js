@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   handleEmailChange = (e) => {
@@ -21,6 +22,9 @@ class Login extends React.Component {
   render() {
     const { AuthStore } = this.props;
     const { values, errors, inProgress } = AuthStore;
+    if (AuthStore.authenticated) {
+      return <Redirect to="/" />;
+    }
     return (
 
       <form onSubmit={this.handleSubmitForm}>
@@ -89,7 +93,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  AuthStore: PropTypes.observableArray.isRequired,
+  AuthStore: PropTypes.observableObject.isRequired,
 };
 
 export default inject('AuthStore')(observer(Login));

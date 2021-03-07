@@ -1,4 +1,5 @@
 import React from 'react';
+import Logout from '../../../components/auth/Logout';
 
 class HeaderFixedNavbar extends React.Component {
   render() {
@@ -39,7 +40,8 @@ class HeaderFixedNavbar extends React.Component {
             <div className="navbar-end">
 
               <div className="navbar-item">
-                <i className="fas fa-sign-out-alt" />
+                <Logout />
+                {/* <i className="fas fa-sign-out-alt" /> */}
               </div>
             </div>
 
