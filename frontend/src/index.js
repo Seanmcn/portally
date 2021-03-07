@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 import App from './App';
 import * as serviceWorker from './utils/serviceWorker';
 import './index.css';
-import { Provider } from "mobx-react";
 import AuthStore from './stores/AuthStore';
 
 const stores = {
-  AuthStore
-}
+  AuthStore,
+};
 
 ReactDOM.render((
   <React.StrictMode>
@@ -19,8 +19,7 @@ ReactDOM.render((
       </Provider>
     </Router>
   </React.StrictMode>
-), document.getElementById('root'))
-
+), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

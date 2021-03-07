@@ -6,5 +6,4 @@ const api = axios.create({
   baseURL: 'https://api.circle.devel',
 });
 
-
 export default api;

@@ -1,8 +1,9 @@
-import {  makeAutoObservable, action } from 'mobx';
-import api from '../utils/api'
+import { makeAutoObservable, action } from 'mobx';
+import api from '../utils/api';
 
 class AuthStore {
   inProgress = false;
+
   errors = undefined;
 
   values = {
@@ -10,11 +11,11 @@ class AuthStore {
     email: '',
     dateOfBirth: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   };
 
-  constructor () {
-    makeAutoObservable(this)
+  constructor() {
+    makeAutoObservable(this);
   }
 
   setName(name) {
@@ -29,7 +30,7 @@ class AuthStore {
     this.values.password = password;
   }
 
-  setConfirmPassword(confirmPassword){
+  setConfirmPassword(confirmPassword) {
     this.values.confirmPassword = confirmPassword;
   }
 
@@ -38,11 +39,11 @@ class AuthStore {
   }
 
   reset() {
-    this.values.name = ';'
+    this.values.name = ';';
     this.values.email = '';
-    this.values.dateOfBirth=''
+    this.values.dateOfBirth = '';
     this.values.password = '';
-    this.values.confirmPassword = ''
+    this.values.confirmPassword = '';
   }
 
   login() {
@@ -51,21 +52,20 @@ class AuthStore {
 
     // return
     api.get('/sanctum/csrf-cookie')
-    .then(() => {
-      api.post('/login', {
-        email: this.values.email,
-        password: this.values.password
+      .then(() => {
+        api.post('/login', {
+          email: this.values.email,
+          password: this.values.password,
+        }).catch(action((err) => {
+          this.errors = err.message;
+        }))
+          .finally(action(() => { this.inProgress = false; }));
       }).catch(action((err) => {
-        this.errors = err.message;
-      }))
-      .finally(action(() => { this.inProgress = false; }));
-    }
-    ).catch(action((err) => {
       // todo: test what we get back on this failure
-      console.log(err);
-      this.errors = err.message;
-    }));
-
+      // eslint-disable-next-line no-console
+        console.log(err);
+        this.errors = err.message;
+      }));
   }
 
   register() {
@@ -73,27 +73,28 @@ class AuthStore {
     this.errors = undefined;
 
     api.get('/sanctum/csrf-cookie')
-        .then(() => {
-              api.post('/register', {
-                email: this.values.email,
-                password: this.values.password,
-                name: this.values.name,
-                date_of_birth : this.values.dateOfBirth,
-                password_confirmation : this.values.confirmPassword,
-              }).catch(action((err) => {
-                this.errors = err.response.data.errors;
-              }))
-                .finally(action(() => { this.inProgress = false; }));
-            }
-        ).catch(action((err) => {
+      .then(() => {
+        api.post('/register', {
+          email: this.values.email,
+          password: this.values.password,
+          name: this.values.name,
+          date_of_birth: this.values.dateOfBirth,
+          password_confirmation: this.values.confirmPassword,
+        }).catch(action((err) => {
+          this.errors = err.response.data.errors;
+        }))
+          .finally(action(() => { this.inProgress = false; }));
+      }).catch(action((err) => {
       // todo: test what we get back on this failure
-      console.log(err);
-      this.errors = err.response.data.errors;
-    }));
+      // eslint-disable-next-line no-console
+        console.log(err);
+        this.errors = err.response.data.errors;
+      }));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   logout() {
   }
 }
 
-export default new AuthStore()
+export default new AuthStore();

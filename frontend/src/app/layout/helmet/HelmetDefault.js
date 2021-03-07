@@ -11,16 +11,15 @@ const HelmetDefault = () => (
       { name: 'charset', content: 'utf-8' },
     ]}
     script={[
-      { 'src': 'https://use.fontawesome.com/releases/v5.0.4/js/all.js' },
+      { src: 'https://use.fontawesome.com/releases/v5.0.4/js/all.js' },
     ]}
     link={[
       {
-        'rel': 'stylesheet',
-        'href': 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
-      }
+        rel: 'stylesheet',
+        href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+      },
     ]}
   />
 
 );
 export default HelmetDefault;
-
