@@ -61,6 +61,7 @@ class AuthStore {
       .finally(action(() => { this.inProgress = false; }));
     }
     ).catch(action((err) => {
+      // todo: test what we get back on this failure
       console.log(err);
       this.errors = err.message;
     }));
@@ -80,13 +81,14 @@ class AuthStore {
                 date_of_birth : this.values.dateOfBirth,
                 password_confirmation : this.values.confirmPassword,
               }).catch(action((err) => {
-                this.errors = err.message;
+                this.errors = err.response.data.errors;
               }))
-                  .finally(action(() => { this.inProgress = false; }));
+                .finally(action(() => { this.inProgress = false; }));
             }
         ).catch(action((err) => {
+      // todo: test what we get back on this failure
       console.log(err);
-      this.errors = err.message;
+      this.errors = err.response.data.errors;
     }));
   }
 
