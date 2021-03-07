@@ -9,7 +9,7 @@ const Login = () => (
         <LoginComponent />
       </div>
       <p className="help">
-        Don&apos;t have an account?
+        Don&apos;t have an account?&nbsp;
         <Link
           to="/register"
         >

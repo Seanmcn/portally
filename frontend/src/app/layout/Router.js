@@ -7,6 +7,7 @@ const Router = () => (
   <Switch>
     <Route path="/login" render={(props) => <Layout {...props} />} />
     <Route path="/register" render={(props) => <Layout {...props} />} />
+    <Route path="/forgot_password" render={(props) => <Layout {...props} />} />
     <Route path="*" render={(props) => <LayoutNavbar {...props} />} />
   </Switch>
 );

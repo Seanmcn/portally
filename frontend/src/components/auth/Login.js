@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   handleEmailChange = (e) => {
@@ -77,15 +77,27 @@ class Login extends React.Component {
 
         {errors ? <p className="help is-danger">Credentials not recognised. Please try again.</p> : null}
         {errors ? <p className="help is-danger">There was an error submitting your details.</p> : null}
+
         <div className="control">
           <button
             type="submit"
-            className="button is-link"
+            className="button is-link is-pulled-right"
             disabled={inProgress}
           >
             Login
           </button>
         </div>
+        <div className="is-clearfix" />
+        <Link
+          to="/forgot_password"
+          className="is-link help"
+        >
+          <span className="icon">
+            <i className="fas fa-unlock-alt" />
+          </span>
+          Forgot Password?
+        </Link>
+
       </form>
 
     );

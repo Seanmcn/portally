@@ -100,6 +100,25 @@ class AuthStore {
       this.errors = err.response.data.errors;
     })).finally(action(() => { this.inProgress = false; this.authenticated = false; }));
   }
+
+  resetPassword() {
+    this.inProgress = true;
+
+    api.get('/sanctum/csrf-cookie')
+      .then(() => {
+        api.post('/password/email', {
+          email: this.values.email,
+        }).catch(action((err) => {
+          this.errors = err.response.data.errors;
+        }))
+          .finally(action(() => { this.inProgress = false; }));
+      }).catch(action((err) => {
+      // todo: test what we get back on this failure
+      // eslint-disable-next-line no-console
+        console.log(err);
+        this.errors = err.response.data.errors;
+      }));
+  }
 }
 
 export default new AuthStore();

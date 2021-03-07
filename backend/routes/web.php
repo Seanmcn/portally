@@ -18,4 +18,4 @@ Route::get('/', function () {
 })->name('default');
 
 
-Auth::routes();
+Auth::routes(['reset'=> true]);
