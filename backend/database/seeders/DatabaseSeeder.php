@@ -16,18 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Book::truncate();
-        $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 50; $i++) {
-            Book::create([
-                'title' => $faker->sentence,
-                'author' => $faker->name,
-            ]);
-        }
         User::truncate();
         User::create([
             'name' => 'Sean',
             'email' => 'me@seanmcn.com',
+            'date_of_birth' => '1990-07-06',
             'password' => Hash::make('password'),
         ]);
     }

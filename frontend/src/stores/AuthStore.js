@@ -77,8 +77,8 @@ class AuthStore {
                 email: this.values.email,
                 password: this.values.password,
                 name: this.values.name,
-                dateOfBirth : this.values.dateOfBirth,
-                confirmPassword : this.values.confirmPassword,
+                date_of_birth : this.values.dateOfBirth,
+                password_confirmation : this.values.confirmPassword,
               }).catch(action((err) => {
                 this.errors = err.message;
               }))
