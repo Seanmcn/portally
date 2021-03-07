@@ -8,7 +8,7 @@ const Register = () => (
 
     <RegisterComponent />
     <p className="help">
-      Already have an account?
+      Already have an account?&nbsp;
       <Link
         to="/login"
       >
