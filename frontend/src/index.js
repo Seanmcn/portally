@@ -5,16 +5,12 @@ import { Provider } from 'mobx-react';
 import App from './App';
 import * as serviceWorker from './utils/serviceWorker';
 import './index.css';
-import AuthStore from './stores/AuthStore';
-
-const stores = {
-  AuthStore,
-};
+import RootStore from './stores/RootStore';
 
 ReactDOM.render((
   <React.StrictMode>
     <Router>
-      <Provider {...stores}>
+      <Provider {...RootStore}>
         <App />
       </Provider>
     </Router>

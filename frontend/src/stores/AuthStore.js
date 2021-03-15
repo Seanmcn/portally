@@ -1,5 +1,25 @@
 import { makeAutoObservable, action } from 'mobx';
+
+import {
+  persistence,
+  StorageAdapter,
+} from 'mobx-persist-store';
+
 import api from '../utils/api';
+
+function readStore(name) {
+  return new Promise((resolve) => {
+    const data = localStorage.getItem(name);
+    resolve(data);
+  });
+}
+
+function writeStore(name, content) {
+  return new Promise((resolve) => {
+    localStorage.setItem(name, content);
+    resolve();
+  });
+}
 
 class AuthStore {
   inProgress = false;
@@ -95,10 +115,12 @@ class AuthStore {
   }
 
   logout() {
-    api.post('/logout', {
-    }).catch(action((err) => {
+    api.post('/logout', {}).catch(action((err) => {
       this.errors = err.response.data.errors;
-    })).finally(action(() => { this.inProgress = false; this.authenticated = false; }));
+    })).finally(action(() => {
+      this.inProgress = false;
+      this.authenticated = false;
+    }));
   }
 
   resetPassword() {
@@ -121,4 +143,15 @@ class AuthStore {
   }
 }
 
-export default new AuthStore();
+export default persistence({
+  name: 'AuthStore',
+  properties: ['authenticated'],
+  adapter: new StorageAdapter({
+    read: readStore,
+    write: writeStore,
+  }),
+  reactionOptions: {
+    // optional
+    delay: 200,
+  },
+})(new AuthStore());
