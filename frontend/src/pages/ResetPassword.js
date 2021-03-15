@@ -8,7 +8,7 @@ const ResetPassword = () => (
 
     <ResetPasswordComponent />
     <p className="help">
-      Suddenly remembered your password?
+      Remembered your password? &nbsp;
       <Link
         to="/login"
       >
