@@ -3,10 +3,10 @@ import Helmet from 'react-helmet';
 
 const HelmetDefault = () => (
   <Helmet
-    title="Circle"
+    title="Portally"
     meta={[
-      { name: 'description', content: 'Social network' },
-      { name: 'keywords', content: 'circle, social, network' },
+      { name: 'description', content: 'Social network/portal' },
+      { name: 'keywords', content: 'portally, social, network, portal' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'charset', content: 'utf-8' },
     ]}

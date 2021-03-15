@@ -7,4 +7,4 @@
 # If you have user-specific configurations you would like
 # to apply, you may also create user-customizations.sh,
 # which will be run after this script.
-sudo cp -f /home/vagrant/code/homestead/config/build.circle.devel.conf  /etc/nginx/sites-available/build.circle.devel
+sudo cp -f /home/vagrant/code/homestead/config/build.portally.devel.conf  /etc/nginx/sites-available/build.portally.devel

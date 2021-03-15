@@ -15,7 +15,7 @@ class Header extends React.Component {
             />
 
           </a>
-          <h1 className="title">Circle</h1>
+          <h1 className="title">Portally</h1>
 
         </div>
         <div className="level-item has-text-centered" />

@@ -11,14 +11,14 @@ folders:
         to: /home/vagrant/code
 sites:
     -
-        map: api.circle.devel
+        map: api.portally.devel
         to: /home/vagrant/code/backend/public
     -
-        map: build.circle.devel
+        map: build.portally.devel
         to: /home/vagrant/code/frontend/build
 
 databases:
-    - circle
+    - portally
 
 features:
     -
@@ -27,5 +27,5 @@ features:
         ohmyzsh: false
     -
         webdriver: false
-name: circle
-hostname: circle
+name: portally
+hostname: portally
