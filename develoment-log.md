@@ -1,3 +1,12 @@
+# 2021-03-15
+- Productive day, took a day of annual leave to focus on this.
+- Have decided to use AWS for hosting.
+- Using AWS SES to handle emails. 
+- Added MobX persisting state in local storage
+- Finished up the forgot/reset password loop
+- Pulled some more Bulma components in to visualise how this will all look
+
+
 # 2021-03-07
 - Lots done today, mainly surrounding login & registration 
 - Now have validation errors from backend appearing on the frontend.
