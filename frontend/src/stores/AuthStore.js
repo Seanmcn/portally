@@ -34,6 +34,7 @@ class AuthStore {
     dateOfBirth: '',
     password: '',
     confirmPassword: '',
+    resetToken: '',
   };
 
   constructor() {
@@ -60,12 +61,17 @@ class AuthStore {
     this.values.dateOfBirth = dateOfBirth;
   }
 
+  setResetToken(resetToken) {
+    this.values.resetToken = resetToken;
+  }
+
   reset() {
     this.values.name = ';';
     this.values.email = '';
     this.values.dateOfBirth = '';
     this.values.password = '';
     this.values.confirmPassword = '';
+    this.values.resetToken = '';
   }
 
   login() {
@@ -108,9 +114,13 @@ class AuthStore {
           name: this.values.name,
           date_of_birth: this.values.dateOfBirth,
           password_confirmation: this.values.confirmPassword,
-        }).catch(action((err) => {
-          this.errors = err.response.data.errors;
-        }))
+        })
+          .then(action(() => {
+            this.errors = undefined;
+          }))
+          .catch(action((err) => {
+            this.errors = err.response.data.errors;
+          }))
           .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
       }).catch(action((err) => {
       // todo: test what we get back on this failure
@@ -123,20 +133,49 @@ class AuthStore {
   logout() {
     api.post('/logout', {}).catch(action((err) => {
       this.errors = err.response.data.errors;
+    })).then(action(() => {
+      this.errors = undefined;
+      this.authenticated = false;
     })).finally(action(() => {
       this.inProgress = false;
-      this.authenticated = false;
     }));
   }
 
-  resetPassword() {
+  forgotPassword() {
     this.inProgress = true;
 
     api.get('/sanctum/csrf-cookie')
       .then(() => {
         api.post('/password/email', {
           email: this.values.email,
-        }).catch(action((err) => {
+        }).then(action(() => {
+          this.errors = undefined;
+        })).catch(action((err) => {
+          this.errors = err.response.data.errors;
+        }))
+          .finally(action(() => { this.inProgress = false; }));
+      }).catch(action((err) => {
+      // todo: test what we get back on this failure
+      // eslint-disable-next-line no-console
+        console.log(err);
+        this.errors = err.response.data.errors;
+      }));
+  }
+
+  resetPassword() {
+    this.inProgress = true;
+    // eslint-disable-next-line no-console
+    console.log('reset token: ', this.values.resetToken);
+    api.get('/sanctum/csrf-cookie')
+      .then(() => {
+        api.post('/password/reset', {
+          token: this.values.resetToken,
+          email: this.values.email,
+          password: this.values.password,
+          password_confirmation: this.values.confirmPassword,
+        }).then(action(() => {
+          this.errors = undefined;
+        })).catch(action((err) => {
           this.errors = err.response.data.errors;
         }))
           .finally(action(() => { this.inProgress = false; }));

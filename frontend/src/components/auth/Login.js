@@ -89,7 +89,7 @@ class Login extends React.Component {
         </div>
         <div className="is-clearfix" />
         <Link
-          to="/forgot_password"
+          to="/forgot-password"
           className="is-link help"
         >
           <span className="icon">

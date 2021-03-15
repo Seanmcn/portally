@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { default as ResetPasswordComponent } from '../components/auth/ResetPassword';
+import { default as ForgotPasswordComponent } from '../components/auth/ForgotPassword';
 
-const ResetPassword = () => (
+const ForgotPassword = () => (
   <div className="container containerLogin">
-    <h1 className="title">Reset Password?</h1>
+    <h1 className="title">Forgot Password?</h1>
 
-    <ResetPasswordComponent />
+    <ForgotPasswordComponent />
     <p className="help">
       Remembered your password? &nbsp;
       <Link
@@ -18,4 +18,4 @@ const ResetPassword = () => (
 
   </div>
 );
-export default ResetPassword;
+export default ForgotPassword;
