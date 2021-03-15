@@ -58,7 +58,7 @@ class ResetPassword extends React.Component {
 }
 
 ResetPassword.propTypes = {
-  AuthStore: PropTypes.observableArray.isRequired,
+  AuthStore: PropTypes.observableObject.isRequired,
 };
 
 export default inject('AuthStore')(observer(ResetPassword));

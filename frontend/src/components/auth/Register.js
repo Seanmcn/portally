@@ -187,7 +187,7 @@ class Register extends React.Component {
 }
 
 Register.propTypes = {
-  AuthStore: PropTypes.observableArray.isRequired,
+  AuthStore: PropTypes.observableObject.isRequired,
 };
 
 export default inject('AuthStore')(observer(Register));
