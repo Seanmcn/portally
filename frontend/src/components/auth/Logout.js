@@ -22,7 +22,14 @@ class Logout extends React.Component {
         onClick={this.handleSubmitForm}
         disabled={inProgress}
       >
-        Logout
+
+        <span className="icon-text">
+          <span className="icon">
+            <i className="fas fa-sign-out-alt" />
+          </span>
+          <span> Logout</span>
+        </span>
+
       </button>
 
     );

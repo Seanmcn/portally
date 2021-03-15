@@ -6,11 +6,13 @@
 $family-sans-serif: "Nunito", sans-serif;
 //$primary: $purple;
 //$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
+$widescreen-enabled: true;
+$fullhd-enabled: true;
 
 // Update some of Bulma's component variables
 $body-background-color: #f4f4f4;
+
+//$navbar-padding-vertical: 2rem;
 
 // Rest of Bulma
 @import '../node_modules/bulma/bulma';
@@ -22,4 +24,8 @@ $body-background-color: #f4f4f4;
 
 .containerLogin {
   max-width: 25rem;
+}
+
+body.has-navbar-fixed-top {
+  padding-top: 4.25rem
 }

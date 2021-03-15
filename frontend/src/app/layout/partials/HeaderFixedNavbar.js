@@ -1,19 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Logout from '../../../components/auth/Logout';
 
 class HeaderFixedNavbar extends React.Component {
   render() {
     return (
-      <div id="main-navbar" className="navbar is-fixed-top">
-        <div className="container is-fluid">
+      <div id="main-navbar" className="navbar is-fixed-top ">
+        <div className="container">
           <div className="navbar-brand">
-            <a href="/" className="navbar-item">
+            <NavLink to="/" className="navbar-item">
               <img
                 src={`${process.env.PUBLIC_URL}/logo.svg`}
                 alt="Logo of a circle"
                 className="navbarLogo"
               />
-            </a>
+              <h1 className="subtitle">Portally</h1>
+            </NavLink>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" href="#">
               <span aria-hidden="true" />
@@ -38,10 +40,15 @@ class HeaderFixedNavbar extends React.Component {
             </div>
 
             <div className="navbar-end">
-
+              <div className="navbar-item">
+                <NavLink to="/settings" title="Account Settings">
+                  <span className="icon">
+                    <i className="fas fa-cogs" />
+                  </span>
+                </NavLink>
+              </div>
               <div className="navbar-item">
                 <Logout />
-                {/* <i className="fas fa-sign-out-alt" /> */}
               </div>
             </div>
 
