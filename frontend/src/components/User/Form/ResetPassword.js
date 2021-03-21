@@ -1,20 +1,17 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
 
-class Register extends React.Component {
-  handleNameChange = (e) => {
+class UserFormResetPassword extends React.Component {
+  componentDidMount() {
+    const windowUrl = window.location.search;
+    const token = new URLSearchParams(windowUrl).get('token');
     const { AuthStore } = this.props;
-    AuthStore.setName(e.target.value);
-  };
+    AuthStore.setResetToken(token);
+  }
 
   handleEmailChange = (e) => {
     const { AuthStore } = this.props;
     AuthStore.setEmail(e.target.value);
-  };
-
-  handleDateOfBirthChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setDateOfBirth(e.target.value);
   };
 
   handlePasswordChange = (e) => {
@@ -30,7 +27,7 @@ class Register extends React.Component {
   handleSubmitForm = (e) => {
     const { AuthStore } = this.props;
     e.preventDefault();
-    AuthStore.register();
+    AuthStore.resetPassword();
   };
 
   errorsToMessages() {
@@ -72,19 +69,10 @@ class Register extends React.Component {
     );
   }
 
-  inputClassNames(key) {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
-    // eslint-disable-next-line no-prototype-builtins
-    if (errors && errors.hasOwnProperty(key)) {
-      return 'input is-danger';
-    }
-    return 'input';
-  }
-
   render() {
     const { AuthStore } = this.props;
-    const { values, inProgress } = AuthStore;
+    const { values, errors, inProgress } = AuthStore;
+
     return (
       <>
         {this.errorMessageContainer()}
@@ -93,73 +81,56 @@ class Register extends React.Component {
           <form onSubmit={this.handleSubmitForm}>
 
             <div className="field">
-              <label className="label" htmlFor="name">Name</label>
-              <div className="control">
-                <input
-                  type="text"
-                  className={this.inputClassNames('name')}
-                  id="name"
-                  placeholder="Your name"
-                  autoComplete="name"
-                  value={values.name}
-                  onChange={this.handleNameChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="field">
               <label className="label" htmlFor="email">Email</label>
               <div className="control has-icons-left has-icons-right">
                 <input
+                  className={`input${
+                    errors ? ' is-danger' : ''}`}
+                  name="email"
                   type="email"
-                  className={this.inputClassNames('email')}
                   placeholder="Your email"
-                  id="email"
                   value={values.email}
                   onChange={this.handleEmailChange}
-                  autoComplete="email"
                   required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-envelope" />
                 </span>
+                {(errors)
+                && (
+                <span className="icon is-small is-right">
+                  <i className="fas fa-exclamation-triangle" />
+                </span>
+                )}
               </div>
             </div>
 
             <div className="field">
-              <label className="label" htmlFor="date_of_birth">Date of Birth</label>
-              <input
-                type="date"
-                id="date_of_birth"
-                className={this.inputClassNames('password_confirmation')}
-                value={values.dateOfBirth}
-                onChange={this.handleDateOfBirthChange}
-                autoComplete="bday"
-                required
-              />
-            </div>
-
-            <div className="field">
               <label className="label" htmlFor="password">Password</label>
-              <input
-                type="password"
-                className={this.inputClassNames('password')}
-                value={values.password}
-                placeholder="Your password"
-                id="password"
-                onChange={this.handlePasswordChange}
-                autoComplete="new-password"
-                data-lpignore="true"
-                required
-              />
+              <div className="control has-icons-right">
+                <input
+                  type="password"
+                  name="password"
+                  className={`input${errors ? ' is-danger' : ''}`}
+                  placeholder="Your password"
+                  value={values.password}
+                  onChange={this.handlePasswordChange}
+                  required
+                />
+                {(errors)
+                && (
+                <span className="icon is-small is-right">
+                  <i className="fas fa-exclamation-triangle" />
+                </span>
+                )}
+              </div>
             </div>
 
             <div className="field">
               <label className="label" htmlFor="confirm_password">Confirm Password</label>
               <input
                 type="password"
-                className={this.inputClassNames('password')}
+                className={`input${errors ? ' is-danger' : ''}`}
                 placeholder="Confirm password"
                 value={values.confirmPassword}
                 id="confirm_password"
@@ -176,7 +147,7 @@ class Register extends React.Component {
                 className="button is-link"
                 disabled={inProgress}
               >
-                Register
+                Submit!
               </button>
             </div>
           </form>
@@ -186,8 +157,8 @@ class Register extends React.Component {
   }
 }
 
-Register.propTypes = {
+UserFormResetPassword.propTypes = {
   AuthStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(Register));
+export default inject('AuthStore')(observer(UserFormResetPassword));

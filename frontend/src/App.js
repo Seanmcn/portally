@@ -1,14 +1,13 @@
 import React from 'react';
-import Router from './app/layout/Router';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Router />
-      </div>
-    );
-  }
-}
+import { Provider } from 'mobx-react';
+import LayoutsRoute from './layouts/Router';
+import RootStore from './stores/RootStore';
+
+const App = () => (
+  <Provider {...RootStore}>
+    <LayoutsRoute />
+  </Provider>
+);
 
 export default App;

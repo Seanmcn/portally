@@ -1,22 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { default as LoginComponent } from '../components/auth/Login';
+import UserFormLogin from '../../components/User/Form/Login';
 
-const Login = () => (
+const ScreensUserLogin = () => (
   <>
     <div className="container containerLogin">
       <div className="box">
-        <LoginComponent />
+        <UserFormLogin />
       </div>
       <p className="help">
         Don&apos;t have an account?&nbsp;
-        <Link
-          to="/register"
-        >
-          Register
-        </Link>
+        <Link to="/register">Register</Link>
       </p>
     </div>
   </>
 );
-export default Login;
+export default ScreensUserLogin;

@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
 import { Link, Redirect } from 'react-router-dom';
 
-class Login extends React.Component {
+class UserFormLogin extends React.Component {
   handleEmailChange = (e) => {
     const { AuthStore } = this.props;
     AuthStore.setEmail(e.target.value);
@@ -23,7 +23,7 @@ class Login extends React.Component {
     const { AuthStore } = this.props;
     const { values, errors, inProgress } = AuthStore;
     if (AuthStore.authenticated) {
-      return <Redirect to="/" />;
+      return <Redirect to="/feed" />;
     }
     return (
 
@@ -104,8 +104,8 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
+UserFormLogin.propTypes = {
   AuthStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(Login));
+export default inject('AuthStore')(observer(UserFormLogin));

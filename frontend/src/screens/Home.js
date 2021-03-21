@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { inject, observer, PropTypes } from 'mobx-react';
 
-class Home extends React.Component {
+class ScreensHome extends React.Component {
   render() {
     const { AuthStore } = this.props;
     const { authenticated } = AuthStore;
@@ -107,8 +107,8 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = {
+ScreensHome.propTypes = {
   AuthStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(Home));
+export default inject('AuthStore')(observer(ScreensHome));

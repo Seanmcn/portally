@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
 
-class Logout extends React.Component {
+class UserFormLogout extends React.Component {
   handleSubmitForm = (e) => {
     e.preventDefault();
     const { AuthStore } = this.props;
@@ -36,8 +36,8 @@ class Logout extends React.Component {
   }
 }
 
-Logout.propTypes = {
+UserFormLogout.propTypes = {
   AuthStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(Logout));
+export default inject('AuthStore')(observer(UserFormLogout));

@@ -1,21 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { default as RegisterComponent } from '../components/auth/Register';
+import UserFormRegister from '../../components/User/Form/Register';
 
-const Register = () => (
+const ScreensUserRegister = () => (
   <div className="container containerLogin">
     <h1 className="title">Register</h1>
-
-    <RegisterComponent />
+    <UserFormRegister />
     <p className="help">
       Already have an account?&nbsp;
-      <Link
-        to="/login"
-      >
-        Login
-      </Link>
+      <Link to="/login">Login</Link>
     </p>
 
   </div>
 );
-export default Register;
+export default ScreensUserRegister;

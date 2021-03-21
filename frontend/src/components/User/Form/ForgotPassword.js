@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
 
-class ForgotPassword extends React.Component {
+class UserFormForgotPassword extends React.Component {
   handleEmailChange = (e) => {
     const { AuthStore } = this.props;
     AuthStore.setEmail(e.target.value);
@@ -57,8 +57,8 @@ class ForgotPassword extends React.Component {
   }
 }
 
-ForgotPassword.propTypes = {
+UserFormForgotPassword.propTypes = {
   AuthStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(ForgotPassword));
+export default inject('AuthStore')(observer(UserFormForgotPassword));
