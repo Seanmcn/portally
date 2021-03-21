@@ -1,3 +1,8 @@
+# 2021-03-21
+- After further thought and more reading on directory structures for ReactJS, I've gone with something alike to what's suggested here: https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76.
+- Have refactored the JS over to path based component naming, have added in 'screens' and will be grouping components by module/feature.
+
+
 # 2021-03-15
 - Productive day, took a day of annual leave to focus on this.
 - Have decided to use AWS for hosting.
