@@ -10,7 +10,7 @@ const ScreensUserLogin = () => (
       </div>
       <p className="help">
         Don&apos;t have an account?&nbsp;
-        <Link to="/register">Register</Link>
+        <Link to="/user/register">Register</Link>
       </p>
     </div>
   </>

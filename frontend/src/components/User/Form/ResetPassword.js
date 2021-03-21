@@ -1,38 +1,39 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
+import UIMessage from '../../UI/Message';
 
 class UserFormResetPassword extends React.Component {
   componentDidMount() {
     const windowUrl = window.location.search;
     const token = new URLSearchParams(windowUrl).get('token');
-    const { AuthStore } = this.props;
-    AuthStore.setResetToken(token);
+    const { UserStore } = this.props;
+    UserStore.setResetToken(token);
   }
 
   handleEmailChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setEmail(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setEmail(e.target.value);
   };
 
   handlePasswordChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setPassword(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setPassword(e.target.value);
   };
 
   handleConfirmPasswordChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setConfirmPassword(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setConfirmPassword(e.target.value);
   };
 
   handleSubmitForm = (e) => {
-    const { AuthStore } = this.props;
+    const { UserStore } = this.props;
     e.preventDefault();
-    AuthStore.resetPassword();
+    UserStore.resetPassword();
   };
 
   errorsToMessages() {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
+    const { UserStore } = this.props;
+    const { errors } = UserStore;
 
     if (errors) {
       const errorKeys = Object.keys(errors);
@@ -52,26 +53,25 @@ class UserFormResetPassword extends React.Component {
   }
 
   errorMessageContainer() {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
+    const { UserStore } = this.props;
+    const { errors } = UserStore;
     if (!errors) return false;
     return (
-      <article className="message is-danger">
-        <div className="message-header">
-          <p>Error</p>
-        </div>
-        <div className="message-body content help">
+      <UIMessage
+        header="Error"
+        type="error"
+        content={(
           <ul className="mt-0">
             {this.errorsToMessages()}
           </ul>
-        </div>
-      </article>
+            )}
+      />
     );
   }
 
   render() {
-    const { AuthStore } = this.props;
-    const { values, errors, inProgress } = AuthStore;
+    const { UserStore } = this.props;
+    const { values, errors, inProgress } = UserStore;
 
     return (
       <>
@@ -158,7 +158,7 @@ class UserFormResetPassword extends React.Component {
 }
 
 UserFormResetPassword.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(UserFormResetPassword));
+export default inject('UserStore')(observer(UserFormResetPassword));

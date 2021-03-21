@@ -21,7 +21,7 @@ function writeStore(name, content) {
   });
 }
 
-class AuthStore {
+class UserStore {
   inProgress = false;
 
   authenticated = false;
@@ -189,7 +189,7 @@ class AuthStore {
 }
 
 export default persistence({
-  name: 'AuthStore',
+  name: 'UserStore',
   properties: ['authenticated'],
   adapter: new StorageAdapter({
     read: readStore,
@@ -199,4 +199,4 @@ export default persistence({
     // optional
     delay: 200,
   },
-})(new AuthStore());
+})(new UserStore());

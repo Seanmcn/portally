@@ -13,10 +13,10 @@ import ScreensHome from './Home';
 const ScreensRoot = () => (
   <Switch>
     <Route exact path="/" component={ScreensHome} />
-    <Route path="/login" component={ScreensUserLogin} />
-    <Route path="/register" component={ScreensUserRegister} />
-    <Route path="/forgot-password" component={ScreensUserForgotPassword} />
-    <Route path="/reset-password" component={ScreensUserResetPassword} />
+    <Route path="/user/login" component={ScreensUserLogin} />
+    <Route path="/user/register" component={ScreensUserRegister} />
+    <Route path="/user/forgot-password" component={ScreensUserForgotPassword} />
+    <Route path="/user/reset-password" component={ScreensUserResetPassword} />
   </Switch>
 );
 

@@ -1,41 +1,42 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
+import UIMessage from '../../UI/Message';
 
 class UserFormRegister extends React.Component {
   handleNameChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setName(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setName(e.target.value);
   };
 
   handleEmailChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setEmail(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setEmail(e.target.value);
   };
 
   handleDateOfBirthChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setDateOfBirth(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setDateOfBirth(e.target.value);
   };
 
   handlePasswordChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setPassword(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setPassword(e.target.value);
   };
 
   handleConfirmPasswordChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setConfirmPassword(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setConfirmPassword(e.target.value);
   };
 
   handleSubmitForm = (e) => {
-    const { AuthStore } = this.props;
+    const { UserStore } = this.props;
     e.preventDefault();
-    AuthStore.register();
+    UserStore.register();
   };
 
   errorsToMessages() {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
+    const { UserStore } = this.props;
+    const { errors } = UserStore;
 
     if (errors) {
       const errorKeys = Object.keys(errors);
@@ -55,26 +56,25 @@ class UserFormRegister extends React.Component {
   }
 
   errorMessageContainer() {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
+    const { UserStore } = this.props;
+    const { errors } = UserStore;
     if (!errors) return false;
     return (
-      <article className="message is-danger">
-        <div className="message-header">
-          <p>Error</p>
-        </div>
-        <div className="message-body content help">
+      <UIMessage
+        header="Error"
+        type="error"
+        content={(
           <ul className="mt-0">
             {this.errorsToMessages()}
           </ul>
-        </div>
-      </article>
+        )}
+      />
     );
   }
 
   inputClassNames(key) {
-    const { AuthStore } = this.props;
-    const { errors } = AuthStore;
+    const { UserStore } = this.props;
+    const { errors } = UserStore;
     // eslint-disable-next-line no-prototype-builtins
     if (errors && errors.hasOwnProperty(key)) {
       return 'input is-danger';
@@ -83,11 +83,11 @@ class UserFormRegister extends React.Component {
   }
 
   render() {
-    const { AuthStore } = this.props;
-    const { values, inProgress } = AuthStore;
+    const { UserStore } = this.props;
+    const { values, inProgress } = UserStore;
     return (
       <>
-        {this.errorMessageContainer()}
+
         <div className="box">
 
           <form onSubmit={this.handleSubmitForm}>
@@ -187,7 +187,7 @@ class UserFormRegister extends React.Component {
 }
 
 UserFormRegister.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(UserFormRegister));
+export default inject('UserStore')(observer(UserFormRegister));

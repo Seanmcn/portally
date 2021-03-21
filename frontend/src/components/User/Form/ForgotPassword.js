@@ -3,19 +3,19 @@ import { inject, observer, PropTypes } from 'mobx-react';
 
 class UserFormForgotPassword extends React.Component {
   handleEmailChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setEmail(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setEmail(e.target.value);
   };
 
   handleSubmitForm = (e) => {
-    const { AuthStore } = this.props;
+    const { UserStore } = this.props;
     e.preventDefault();
-    AuthStore.forgotPassword();
+    UserStore.forgotPassword();
   };
 
   render() {
-    const { AuthStore } = this.props;
-    const { values, inProgress } = AuthStore;
+    const { UserStore } = this.props;
+    const { values, inProgress } = UserStore;
     return (
       <>
         <div className="box">
@@ -58,7 +58,7 @@ class UserFormForgotPassword extends React.Component {
 }
 
 UserFormForgotPassword.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(UserFormForgotPassword));
+export default inject('UserStore')(observer(UserFormForgotPassword));

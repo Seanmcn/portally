@@ -1,7 +1,7 @@
-import AuthStore from './AuthStore';
+import UserStore from './UserStore';
 
 const RootStore = {
-  AuthStore,
+  UserStore,
 };
 
 export default RootStore;

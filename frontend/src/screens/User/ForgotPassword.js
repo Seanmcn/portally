@@ -8,7 +8,7 @@ const ScreensUserForgotPassword = () => (
     <UserFormForgotPassword />
     <p className="help">
       Remembered your password? &nbsp;
-      <Link to="/login">Login</Link>
+      <Link to="/user/login">Login</Link>
     </p>
 
   </div>

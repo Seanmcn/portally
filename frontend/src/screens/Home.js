@@ -6,8 +6,8 @@ import { inject, observer, PropTypes } from 'mobx-react';
 
 class ScreensHome extends React.Component {
   render() {
-    const { AuthStore } = this.props;
-    const { authenticated } = AuthStore;
+    const { UserStore } = this.props;
+    const { authenticated } = UserStore;
     if (authenticated) {
       return (
         <div className="container">
@@ -99,8 +99,8 @@ class ScreensHome extends React.Component {
     return (
       <div className="container">
         <div className="box">
-          <p><Link to="/login">Login</Link></p>
-          <p><Link to="/register">Register</Link></p>
+          <p><Link to="/user/login">Login</Link></p>
+          <p><Link to="/user/register">Register</Link></p>
         </div>
       </div>
     );
@@ -108,7 +108,7 @@ class ScreensHome extends React.Component {
 }
 
 ScreensHome.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(ScreensHome));
+export default inject('UserStore')(observer(ScreensHome));

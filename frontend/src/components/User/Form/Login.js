@@ -4,26 +4,26 @@ import { Link, Redirect } from 'react-router-dom';
 
 class UserFormLogin extends React.Component {
   handleEmailChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setEmail(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setEmail(e.target.value);
   };
 
   handlePasswordChange = (e) => {
-    const { AuthStore } = this.props;
-    AuthStore.setPassword(e.target.value);
+    const { UserStore } = this.props;
+    UserStore.setPassword(e.target.value);
   };
 
   handleSubmitForm = (e) => {
     e.preventDefault();
-    const { AuthStore } = this.props;
-    AuthStore.login();
+    const { UserStore } = this.props;
+    UserStore.login();
   };
 
   render() {
-    const { AuthStore } = this.props;
-    const { values, errors, inProgress } = AuthStore;
-    if (AuthStore.authenticated) {
-      return <Redirect to="/feed" />;
+    const { UserStore } = this.props;
+    const { values, errors, inProgress } = UserStore;
+    if (UserStore.authenticated) {
+      return <Redirect to="/" />;
     }
     return (
 
@@ -89,7 +89,7 @@ class UserFormLogin extends React.Component {
         </div>
         <div className="is-clearfix" />
         <Link
-          to="/forgot-password"
+          to="/user/forgot-password"
           className="is-link help"
         >
           <span className="icon">
@@ -105,7 +105,7 @@ class UserFormLogin extends React.Component {
 }
 
 UserFormLogin.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(UserFormLogin));
+export default inject('UserStore')(observer(UserFormLogin));

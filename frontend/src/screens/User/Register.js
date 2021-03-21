@@ -8,7 +8,7 @@ const ScreensUserRegister = () => (
     <UserFormRegister />
     <p className="help">
       Already have an account?&nbsp;
-      <Link to="/login">Login</Link>
+      <Link to="/user/login">Login</Link>
     </p>
 
   </div>

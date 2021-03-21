@@ -5,15 +5,15 @@ import { Redirect } from 'react-router-dom';
 class UserFormLogout extends React.Component {
   handleSubmitForm = (e) => {
     e.preventDefault();
-    const { AuthStore } = this.props;
-    AuthStore.logout();
+    const { UserStore } = this.props;
+    UserStore.logout();
   };
 
   render() {
-    const { AuthStore } = this.props;
-    const { inProgress, authenticated } = AuthStore;
+    const { UserStore } = this.props;
+    const { inProgress, authenticated } = UserStore;
     if (!authenticated) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/user/login" />;
     }
     return (
       <button
@@ -37,7 +37,7 @@ class UserFormLogout extends React.Component {
 }
 
 UserFormLogout.propTypes = {
-  AuthStore: PropTypes.observableObject.isRequired,
+  UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('AuthStore')(observer(UserFormLogout));
+export default inject('UserStore')(observer(UserFormLogout));
