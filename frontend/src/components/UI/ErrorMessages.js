@@ -23,9 +23,11 @@ const UIErrorMessages = (props) => {
 
   );
 };
+UIErrorMessages.defaultProps = {
+  errors: null,
+};
 
 UIErrorMessages.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object,
 };
 export default UIErrorMessages;
