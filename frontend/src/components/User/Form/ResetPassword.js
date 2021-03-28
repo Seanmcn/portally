@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import UIMessage from '../../UI/Message';
+import UIErrorMessages from '../../UI/ErrorMessages';
 
 class UserFormResetPassword extends React.Component {
   componentDidMount() {
@@ -31,51 +31,13 @@ class UserFormResetPassword extends React.Component {
     UserStore.resetPassword();
   };
 
-  errorsToMessages() {
-    const { UserStore } = this.props;
-    const { errors } = UserStore;
-
-    if (errors) {
-      const errorKeys = Object.keys(errors);
-      const errorMessages = [];
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const key of errorKeys) {
-        errors[key].forEach((error) => {
-          errorMessages.push(error);
-        });
-      }
-      return errorMessages.map(
-        (error) => <li className="help is-danger">{error}</li>,
-      );
-    }
-    return false;
-  }
-
-  errorMessageContainer() {
-    const { UserStore } = this.props;
-    const { errors } = UserStore;
-    if (!errors) return false;
-    return (
-      <UIMessage
-        header="Error"
-        type="error"
-        content={(
-          <ul className="mt-0">
-            {this.errorsToMessages()}
-          </ul>
-            )}
-      />
-    );
-  }
-
   render() {
     const { UserStore } = this.props;
     const { values, errors, inProgress } = UserStore;
 
     return (
       <>
-        {this.errorMessageContainer()}
+        <UIErrorMessages errors={errors} />
         <div className="box">
 
           <form onSubmit={this.handleSubmitForm}>

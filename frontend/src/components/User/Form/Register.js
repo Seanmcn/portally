@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import UIMessage from '../../UI/Message';
+import UIErrorMessages from '../../UI/ErrorMessages';
 
 class UserFormRegister extends React.Component {
   handleNameChange = (e) => {
@@ -34,44 +34,6 @@ class UserFormRegister extends React.Component {
     UserStore.register();
   };
 
-  errorsToMessages() {
-    const { UserStore } = this.props;
-    const { errors } = UserStore;
-
-    if (errors) {
-      const errorKeys = Object.keys(errors);
-      const errorMessages = [];
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const key of errorKeys) {
-        errors[key].forEach((error) => {
-          errorMessages.push(error);
-        });
-      }
-      return errorMessages.map(
-        (error) => <li className="help is-danger">{error}</li>,
-      );
-    }
-    return false;
-  }
-
-  errorMessageContainer() {
-    const { UserStore } = this.props;
-    const { errors } = UserStore;
-    if (!errors) return false;
-    return (
-      <UIMessage
-        header="Error"
-        type="error"
-        content={(
-          <ul className="mt-0">
-            {this.errorsToMessages()}
-          </ul>
-        )}
-      />
-    );
-  }
-
   inputClassNames(key) {
     const { UserStore } = this.props;
     const { errors } = UserStore;
@@ -84,10 +46,10 @@ class UserFormRegister extends React.Component {
 
   render() {
     const { UserStore } = this.props;
-    const { values, inProgress } = UserStore;
+    const { values, inProgress, errors } = UserStore;
     return (
       <>
-
+        <UIErrorMessages errors={errors} />
         <div className="box">
 
           <form onSubmit={this.handleSubmitForm}>

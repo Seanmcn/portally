@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
+import UIErrorMessages from '../../UI/ErrorMessages';
 
 class UserFormForgotPassword extends React.Component {
   handleEmailChange = (e) => {
@@ -15,9 +16,10 @@ class UserFormForgotPassword extends React.Component {
 
   render() {
     const { UserStore } = this.props;
-    const { values, inProgress } = UserStore;
+    const { values, inProgress, errors } = UserStore;
     return (
       <>
+        <UIErrorMessages errors={errors} />
         <div className="box">
 
           <form onSubmit={this.handleSubmitForm}>
