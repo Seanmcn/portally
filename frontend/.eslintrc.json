@@ -21,7 +21,6 @@
   "rules": {
     "react/prefer-stateless-function": "off",
     "react/jsx-filename-extension": "off",
-    "import/no-named-default": "off",
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
