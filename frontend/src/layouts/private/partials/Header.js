@@ -39,7 +39,7 @@ const Header = () => (
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <NavLink to="/settings" title="Account Settings">
+            <NavLink to="/user/settings" title="Account Settings">
               <span className="icon">
                 <i className="fas fa-cogs" />
               </span>
