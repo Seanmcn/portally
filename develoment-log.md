@@ -1,3 +1,8 @@
+# 2021-03-28
+- Not super motivated the last week, but we do now have a basic user update page working.
+- Need to think about the front-end error message handling, right now we are returning validation errors fine, but errors outside that (eg network) are causing crashes.
+- I'm aiming to have a user system completed before moving on to anything else so I can use this project as a template for others.
+
 # 2021-03-21
 - After further thought and more reading on directory structures for ReactJS, I've gone with something alike to what's suggested here: https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76.
 - Have refactored the JS over to path based component naming, have added in 'screens' and will be grouping components by module/feature.
