@@ -8,6 +8,7 @@ import ScreensUserLogin from './User/Login';
 import ScreensUserRegister from './User/Register';
 import ScreensUserForgotPassword from './User/ForgotPassword';
 import ScreensUserResetPassword from './User/ResetPassword';
+import ScreensUserSettings from './User/Settings';
 import ScreensHome from './Home';
 
 const ScreensRoot = () => (
@@ -17,6 +18,7 @@ const ScreensRoot = () => (
     <Route path="/user/register" component={ScreensUserRegister} />
     <Route path="/user/forgot-password" component={ScreensUserForgotPassword} />
     <Route path="/user/reset-password" component={ScreensUserResetPassword} />
+    <Route path="/user/settings" component={ScreensUserSettings} />
   </Switch>
 );
 

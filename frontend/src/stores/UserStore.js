@@ -74,6 +74,47 @@ class UserStore {
     this.values.resetToken = '';
   }
 
+  get() {
+    this.inProgress = true;
+    this.errors = undefined;
+
+    api.get('/api/user', {
+    })
+      .then(action((response) => {
+        console.log('response is', response);
+
+        this.values.name = response.data.name;
+        this.values.email = response.data.email;
+        this.values.dateOfBirth = response.data.date_of_birth;
+      }))
+      .catch(action((err) => {
+        this.errors = {};
+        this.errors.system = err.message;
+      }))
+      .finally(action(() => {
+        this.inProgress = false;
+      }));
+  }
+
+  update() {
+    this.inProgress = true;
+    this.errors = undefined;
+    api.post('/api/user', {
+      email: this.values.email,
+      // password: this.values.password,
+      name: this.values.name,
+      date_of_birth: this.values.dateOfBirth,
+      // password_confirmation: this.values.confirmPassword,
+    })
+      .then(action(() => {
+        this.errors = undefined;
+      }))
+      .catch(action((err) => {
+        this.errors = err.response.data.errors;
+      }))
+      .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
+  }
+
   login() {
     this.inProgress = true;
     this.errors = undefined;

@@ -1,8 +1,13 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import UIMessage from '../../UI/Message';
+import UIErrorMessages from '../../UI/ErrorMessages';
 
 class UserFormSettings extends React.Component {
+  componentDidMount() {
+    const { UserStore } = this.props;
+    UserStore.get();
+  }
+
     handleNameChange = (e) => {
       const { UserStore } = this.props;
       UserStore.setName(e.target.value);
@@ -31,46 +36,8 @@ class UserFormSettings extends React.Component {
     handleSubmitForm = (e) => {
       const { UserStore } = this.props;
       e.preventDefault();
-      UserStore.register();
+      UserStore.update();
     };
-
-    errorsToMessages() {
-      const { UserStore } = this.props;
-      const { errors } = UserStore;
-
-      if (errors) {
-        const errorKeys = Object.keys(errors);
-        const errorMessages = [];
-
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key of errorKeys) {
-          errors[key].forEach((error) => {
-            errorMessages.push(error);
-          });
-        }
-        return errorMessages.map(
-          (error) => <li className="help is-danger">{error}</li>,
-        );
-      }
-      return false;
-    }
-
-    errorMessageContainer() {
-      const { UserStore } = this.props;
-      const { errors } = UserStore;
-      if (!errors) return false;
-      return (
-        <UIMessage
-          header="Error"
-          type="error"
-          content={(
-            <ul className="mt-0">
-              {this.errorsToMessages()}
-            </ul>
-              )}
-        />
-      );
-    }
 
     inputClassNames(key) {
       const { UserStore } = this.props;
@@ -84,12 +51,13 @@ class UserFormSettings extends React.Component {
 
     render() {
       const { UserStore } = this.props;
-      const { values, inProgress } = UserStore;
+      const { values, inProgress, errors } = UserStore;
       return (
         <>
-          {this.errorMessageContainer()}
+          <UIErrorMessages errors={errors} />
           <div className="box">
 
+            <h1 className="title">User Settings</h1>
             <form onSubmit={this.handleSubmitForm}>
 
               <div className="field">
@@ -151,7 +119,7 @@ class UserFormSettings extends React.Component {
                   onChange={this.handlePasswordChange}
                   autoComplete="new-password"
                   data-lpignore="true"
-                  required
+
                 />
               </div>
 
@@ -166,7 +134,7 @@ class UserFormSettings extends React.Component {
                   onChange={this.handleConfirmPasswordChange}
                   autoComplete="new-password"
                   data-lpignore="true"
-                  required
+
                 />
               </div>
 
@@ -176,7 +144,7 @@ class UserFormSettings extends React.Component {
                   className="button is-link"
                   disabled={inProgress}
                 >
-                  Register
+                  Update
                 </button>
               </div>
             </form>
