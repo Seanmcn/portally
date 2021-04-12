@@ -1,5 +1,6 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import UIErrorMessages from '../../UI/ErrorMessages';
 
 class UserFormRegister extends React.Component {
@@ -52,6 +53,15 @@ class UserFormRegister extends React.Component {
   render() {
     const { UserStore } = this.props;
     const { values, inProgress, errors } = UserStore;
+    if (UserStore.registered) {
+      return (
+        <div className="box">
+          Thanks for registering, please
+          {' '}
+          <Link to="/user/login">Login!</Link>
+        </div>
+      );
+    }
     return (
       <>
         <UIErrorMessages errors={errors} />

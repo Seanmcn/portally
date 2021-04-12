@@ -26,6 +26,8 @@ class UserStore {
 
   authenticated = false;
 
+  registered = false;
+
   errors = undefined;
 
   errorsPasswordUpdate = undefined;
@@ -186,6 +188,7 @@ class UserStore {
         })
           .then(action(() => {
             this.errors = undefined;
+            this.registered = true;
           }))
           .catch(action((err) => {
             this.errors = err.response.data.errors;
