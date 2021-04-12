@@ -38,6 +38,7 @@ class UserStore {
     confirmPassword: '',
     newPassword: '',
     resetToken: '',
+    inviteCode: '',
   };
 
   constructor() {
@@ -72,6 +73,10 @@ class UserStore {
     this.values.resetToken = resetToken;
   }
 
+  setInviteCode(inviteCode) {
+    this.values.inviteCode = inviteCode;
+  }
+
   reset() {
     this.values.name = ';';
     this.values.email = '';
@@ -80,6 +85,7 @@ class UserStore {
     this.values.confirmPassword = '';
     this.values.newPassword = '';
     this.values.resetToken = '';
+    this.values.inviteCode = '';
   }
 
   get() {
@@ -176,6 +182,7 @@ class UserStore {
           name: this.values.name,
           date_of_birth: this.values.dateOfBirth,
           password_confirmation: this.values.confirmPassword,
+          invite_code: this.values.inviteCode,
         })
           .then(action(() => {
             this.errors = undefined;

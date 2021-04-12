@@ -28,6 +28,11 @@ class UserFormRegister extends React.Component {
     UserStore.setConfirmPassword(e.target.value);
   };
 
+  handleInviteCodeChange = (e) => {
+    const { UserStore } = this.props;
+    UserStore.setInviteCode(e.target.value);
+  };
+
   handleSubmitForm = (e) => {
     const { UserStore } = this.props;
     e.preventDefault();
@@ -130,6 +135,21 @@ class UserFormRegister extends React.Component {
                 data-lpignore="true"
                 required
               />
+            </div>
+
+            <div className="field">
+              <label className="label" htmlFor="invite_code">Invite Code</label>
+              <div className="control">
+                <input
+                  type="text"
+                  className={this.inputClassNames('invite_code')}
+                  id="invite_code"
+                  placeholder="Your invite code!"
+                  value={values.inviteCode}
+                  onChange={this.handleInviteCodeChange}
+                  required
+                />
+              </div>
             </div>
 
             <div className="control">
