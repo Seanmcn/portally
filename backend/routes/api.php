@@ -17,4 +17,5 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/user', [UserController::class, 'get']);
-Route::post('/user', [UserController::class, 'update']);
+Route::post('/user/info', [UserController::class, 'updateInfo']);
+Route::post('/user/password', [UserController::class, 'updatePassword']);

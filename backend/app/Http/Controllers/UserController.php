@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\MatchOldPassword;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -30,12 +32,12 @@ class UserController extends Controller
     }
 
     /**
-     * Update User
+     * Update user info
      *
      * @param Request $request
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request)
+    public function updateInfo(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -48,13 +50,32 @@ class UserController extends Controller
         $user = User::findOrFail($userId);
 
         $user->fill([
-            'name' => $request->name,
-            'email' => $request->email,
-            'date_of_birth' => $request->date_of_birth,
+            'name' => $request->post('name'),
+            'email' => $request->post('email'),
+            'date_of_birth' => $request->post('date_of_birth'),
         ]);
 
         $user->save();
 
         return new Response(null, Response::HTTP_OK);
+    }
+
+    /**
+     * @param Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updatePassword(Request $request) {
+        $this->validate($request, [
+            'password' => ['required', new MatchOldPassword],
+            'new_password' => 'required',
+            'confirm_password' => 'same:new_password',
+        ]);
+
+        User::find(
+            Auth()->user()->getAuthIdentifier()
+        )->update([
+            'password' => Hash::make($request->post('new_password'))
+        ]);
+
     }
 }

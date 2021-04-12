@@ -28,12 +28,15 @@ class UserStore {
 
   errors = undefined;
 
+  errorsPasswordUpdate = undefined;
+
   values = {
     name: '',
     email: '',
     dateOfBirth: '',
     password: '',
     confirmPassword: '',
+    newPassword: '',
     resetToken: '',
   };
 
@@ -57,6 +60,10 @@ class UserStore {
     this.values.confirmPassword = confirmPassword;
   }
 
+  setNewPassword(newPassword) {
+    this.values.newPassword = newPassword;
+  }
+
   setDateOfBirth(dateOfBirth) {
     this.values.dateOfBirth = dateOfBirth;
   }
@@ -71,6 +78,7 @@ class UserStore {
     this.values.dateOfBirth = '';
     this.values.password = '';
     this.values.confirmPassword = '';
+    this.values.newPassword = '';
     this.values.resetToken = '';
   }
 
@@ -81,8 +89,6 @@ class UserStore {
     api.get('/api/user', {
     })
       .then(action((response) => {
-        console.log('response is', response);
-
         this.values.name = response.data.name;
         this.values.email = response.data.email;
         this.values.dateOfBirth = response.data.date_of_birth;
@@ -99,18 +105,33 @@ class UserStore {
   update() {
     this.inProgress = true;
     this.errors = undefined;
-    api.post('/api/user', {
+    api.post('/api/user/info', {
       email: this.values.email,
-      // password: this.values.password,
       name: this.values.name,
       date_of_birth: this.values.dateOfBirth,
-      // password_confirmation: this.values.confirmPassword,
     })
       .then(action(() => {
         this.errors = undefined;
       }))
       .catch(action((err) => {
         this.errors = err.response.data.errors;
+      }))
+      .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
+  }
+
+  updatePassword() {
+    this.inProgress = true;
+    this.errorsPasswordUpdate = undefined;
+    api.post('/api/user/password', {
+      password: this.values.password,
+      new_password: this.values.newPassword,
+      confirm_password: this.values.confirmPassword,
+    })
+      .then(action(() => {
+        this.errorsPasswordUpdate = undefined;
+      }))
+      .catch(action((err) => {
+        this.errorsPasswordUpdate = err.response.data.errors;
       }))
       .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
   }
@@ -205,8 +226,6 @@ class UserStore {
 
   resetPassword() {
     this.inProgress = true;
-    // eslint-disable-next-line no-console
-    console.log('reset token: ', this.values.resetToken);
     api.get('/sanctum/csrf-cookie')
       .then(() => {
         api.post('/password/reset', {

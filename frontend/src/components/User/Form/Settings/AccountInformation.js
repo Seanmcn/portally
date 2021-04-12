@@ -1,8 +1,8 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import UIErrorMessages from '../../UI/ErrorMessages';
+import UIErrorMessages from '../../../UI/ErrorMessages';
 
-class UserFormSettings extends React.Component {
+class UserFormSettingsAccountInformation extends React.Component {
   componentDidMount() {
     const { UserStore } = this.props;
     UserStore.get();
@@ -21,16 +21,6 @@ class UserFormSettings extends React.Component {
     handleDateOfBirthChange = (e) => {
       const { UserStore } = this.props;
       UserStore.setDateOfBirth(e.target.value);
-    };
-
-    handlePasswordChange = (e) => {
-      const { UserStore } = this.props;
-      UserStore.setPassword(e.target.value);
-    };
-
-    handleConfirmPasswordChange = (e) => {
-      const { UserStore } = this.props;
-      UserStore.setConfirmPassword(e.target.value);
     };
 
     handleSubmitForm = (e) => {
@@ -57,8 +47,8 @@ class UserFormSettings extends React.Component {
           <UIErrorMessages errors={errors} />
           <div className="box">
 
-            <h1 className="title">User Settings</h1>
-            <form onSubmit={this.handleSubmitForm}>
+            <h1 className="title">Account Information</h1>
+            <form onSubmit={this.handleSubmitForm} autoComplete="off">
 
               <div className="field">
                 <label className="label" htmlFor="name">Name</label>
@@ -107,37 +97,6 @@ class UserFormSettings extends React.Component {
                   required
                 />
               </div>
-
-              <div className="field">
-                <label className="label" htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className={this.inputClassNames('password')}
-                  value={values.password}
-                  placeholder="Your password"
-                  id="password"
-                  onChange={this.handlePasswordChange}
-                  autoComplete="new-password"
-                  data-lpignore="true"
-
-                />
-              </div>
-
-              <div className="field">
-                <label className="label" htmlFor="confirm_password">Confirm Password</label>
-                <input
-                  type="password"
-                  className={this.inputClassNames('password')}
-                  placeholder="Confirm password"
-                  value={values.confirmPassword}
-                  id="confirm_password"
-                  onChange={this.handleConfirmPasswordChange}
-                  autoComplete="new-password"
-                  data-lpignore="true"
-
-                />
-              </div>
-
               <div className="control">
                 <button
                   type="submit"
@@ -148,14 +107,16 @@ class UserFormSettings extends React.Component {
                 </button>
               </div>
             </form>
+
+            <hr />
           </div>
         </>
       );
     }
 }
 
-UserFormSettings.propTypes = {
+UserFormSettingsAccountInformation.propTypes = {
   UserStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('UserStore')(observer(UserFormSettings));
+export default inject('UserStore')(observer(UserFormSettingsAccountInformation));
