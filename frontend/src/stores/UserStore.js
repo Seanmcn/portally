@@ -193,7 +193,9 @@ class UserStore {
           .catch(action((err) => {
             this.errors = err.response.data.errors;
           }))
-          .finally(action(() => { this.inProgress = false; this.authenticated = true; }));
+          .finally(action(() => {
+            this.inProgress = false;
+          }));
       }).catch(action((err) => {
       // todo: test what we get back on this failure
       // eslint-disable-next-line no-console
