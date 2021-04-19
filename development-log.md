@@ -1,3 +1,9 @@
+# 2021-04-12
+- Fixed an issue where after registration the front-end thought it was authenticated
+- Added ability to change password to user settings page
+- Added "User Invites" concept, have `.env` for backend, so it is toggleable there, didn't bother adding a toggle into the front-end as that will be significantly changed anyway.
+- Wondering how best to share `.env` variables between backend and frontend, I'd rather not maintain two files.
+
 # 2021-03-28
 - Not super motivated the last week, but we do now have a basic user update page working.
 - Need to think about the front-end error message handling, right now we are returning validation errors fine, but errors outside that (eg network) are causing crashes.
