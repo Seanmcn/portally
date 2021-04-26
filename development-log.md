@@ -1,3 +1,10 @@
+# 2021-04-26
+- After researching e2e encryption implementations, I'm going to avoid getting into that right now, it would be nice to have, but this isn't meant to be a secure messaging app, so the overhead doesn't seem worthwhile right now, especially with this being web-first rather than mobile-first.
+
+# 2021-04-19
+- Have decided to veer into messaging first, I figure that will lay the groundwork for the status system with them both sharing a similar text input (auto embeds, file uploads) & the need to broadcasting events to the front-end.
+- Started looking into e2e encryption https://virgilsecurity.com/pricing/ free for up to 250 users and looks like it would be okay to implement, would rather not be limited to 250 users by a product though. 
+
 # 2021-04-12
 - Fixed an issue where after registration the front-end thought it was authenticated
 - Added ability to change password to user settings page

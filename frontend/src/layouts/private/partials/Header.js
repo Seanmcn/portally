@@ -25,15 +25,11 @@ const Header = () => (
         <div className="navbar-start">
 
           <div className="navbar-item">
-            <i className="fas fa-inbox" />
-          </div>
-
-          <div className="navbar-item">
-            <i className="far fa-comment" />
-          </div>
-
-          <div className="navbar-item">
-            <i className="far fa-bell" />
+            <NavLink to="/messages" title="Messages">
+              <span className="icon">
+                <i className="fas fa-envelope" />
+              </span>
+            </NavLink>
           </div>
         </div>
 

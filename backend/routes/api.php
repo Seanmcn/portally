@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +15,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/user', [UserController::class, 'get']);
-Route::post('/user/info', [UserController::class, 'updateInfo']);
-Route::post('/user/password', [UserController::class, 'updatePassword']);
+Route::get('user', [Controllers\UserController::class, 'get']);
+Route::post('user/info', [Controllers\UserController::class, 'updateInfo']);
+Route::post('user/password', [Controllers\UserController::class, 'updatePassword']);
+
+Route::get('messages', [Controllers\MessagesController::class, 'index']);
+Route::post('messages', [Controllers\MessagesController::class, 'store']);
+Route::get('messages/thread/{id}', [Controllers\MessagesController::class, 'show']);
+Route::put('messages/thread/{id}',[Controllers\MessagesController::class, 'update']);

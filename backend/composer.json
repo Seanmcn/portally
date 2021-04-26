@@ -10,16 +10,18 @@
     "require": {
         "php": "^7.3",
         "aws/aws-sdk-php": "^3.173",
+        "cmgmyr/messenger": "^2.22",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+        "ext-json": "*"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.9",
+        "barryvdh/laravel-ide-helper": "^2.10.0",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
