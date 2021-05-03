@@ -1,3 +1,6 @@
+# 2021-05-03
+- I've been doing a lot of thinking about mobile-first design, after a rabbit hole into lots of CSS frameworks, I'm now ripping Bulma.io out (which I use on my blog) and switching to use https://github.com/material-components/material-components-web-components. Using web components within React does seem a little odd, but this library does provide everything I expect this project need in order for it to feel like an app while being a PWA.  
+
 # 2021-04-26
 - After researching e2e encryption implementations, I'm going to avoid getting into that right now, it would be nice to have, but this isn't meant to be a secure messaging app, so the overhead doesn't seem worthwhile right now, especially with this being web-first rather than mobile-first.
 
