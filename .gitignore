@@ -1,5 +1,6 @@
 .idea/
 .cert/
+node_modules
 frontend/src/index.css
 backend/.phpstorm.meta.php
 backend/_ide_helper*
