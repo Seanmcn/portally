@@ -6,28 +6,17 @@ import '@material/mwc-drawer';
 // eslint-disable-next-line no-unused-vars
 import Helmet from 'react-helmet';
 import { NavLink } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 
 class MobileLayout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      navDrawerOpen: true,
-      navDrawerCondensed: false,
-    };
-    this.toggleNavMenu = this.toggleNavMenu.bind(this);
-    this.toggleNavDrawerCondensed = this.toggleNavDrawerCondensed.bind(this);
-  }
-
-  toggleNavMenu() {
-    this.setState((state) => ({ navDrawerOpen: !state.navDrawerOpen, navDrawerCondensed: false }));
-  }
-
-  toggleNavDrawerCondensed() {
-    this.setState((state) => ({ navDrawerCondensed: !state.navDrawerCondensed }));
-  }
-
   render() {
-    const { navDrawerOpen, navDrawerCondensed } = this.state;
+    // eslint-disable-next-line react/prop-types
+    const { UserInterfaceStore } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const { values } = UserInterfaceStore;
+    // eslint-disable-next-line react/prop-types
+    const { navDrawerOpen, navDrawerCondensed } = values;
+
     const isNavDrawerClosed = navDrawerOpen ? '' : 'is-closed';
     const isNavDrawerCondensed = navDrawerCondensed ? 'is-condensed' : '';
     return (
@@ -48,11 +37,12 @@ class MobileLayout extends React.Component {
 
           <nav className={`navigationDrawer ${isNavDrawerClosed} ${isNavDrawerCondensed}`}>
             <section className="navigationSection">
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               {/* Todo: fix link & anchors */}
-              <button onClick={this.toggleNavDrawerCondensed} type="button" className="navigationDrawerDesktopIcon">
+              {/* eslint-disable-next-line react/prop-types */}
+              <button onClick={UserInterfaceStore.toggleNavDrawerCondensed} type="button" className="navigationDrawerDesktopIcon">
                 <i className="fi fi-nav-icon-a" />
               </button>
+
               <NavLink className="navigationItem" to="/mobile" activeClassName="active">
                 <div className="navigationItemIcon">
                   <i className="fi fi-home" />
@@ -147,7 +137,8 @@ class MobileLayout extends React.Component {
 
           <div className="appContainer">
             <div className="appBar">
-              <button onClick={this.toggleNavMenu} type="button" className="appBarIcon navigationDrawerMobileIcon">
+              {/* eslint-disable-next-line react/prop-types */}
+              <button onClick={UserInterfaceStore.toggleNavDrawer} type="button" className="appBarIcon navigationDrawerMobileIcon">
                 <i className="fi fi-nav-icon-a" />
               </button>
               <div>
@@ -182,4 +173,4 @@ class MobileLayout extends React.Component {
     );
   }
 }
-export default MobileLayout;
+export default inject('UserInterfaceStore')(observer(MobileLayout));

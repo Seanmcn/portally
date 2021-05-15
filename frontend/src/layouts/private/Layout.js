@@ -14,17 +14,18 @@ const PrivateLayout = () => (
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'charset', content: 'utf-8' },
       ]}
-      script={[
-        { src: 'https://use.fontawesome.com/releases/v5.0.4/js/all.js' },
-      ]}
       link={[
         {
           rel: 'stylesheet',
-          href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css',
         },
       ]}
       bodyAttributes={{
-        class: 'has-navbar-fixed-top',
+        // class: 'has-navbar-fixed-top',
       }}
     />
     <Header />
