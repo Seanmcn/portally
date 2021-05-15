@@ -1,5 +1,21 @@
+# 2021-05-15
+- https://fontisto.com/icons
+- Have navigation menu working now for mobile/desktop/tablet. Tablet design still needs some work, mainly around automatically entering that mode when screen size is tablet.
+- Flexbox is great! ^_^
+- I need to consider multiple users on one device as everything sort of relies upon local storage right now.
+
+
+# 2021-05-14
+- After more thought, why do I want my layout as a dependency. Change of plan, flexbox time!
+- https://www.npmjs.com/package/react-responsive 
+- https://www.npmjs.com/package/react-device-detect
+- https://goshakkk.name/different-mobile-desktop-tablet-layouts-react/
+- https://iconic.app
+- https://www.figma.com/file/irKuqCDE1HP07qYOinudU3/Portally-Responsive-Design?node-id=0%3A1
+
 # 2021-05-03
 - I've been doing a lot of thinking about mobile-first design, after a rabbit hole into lots of CSS frameworks, I'm now ripping Bulma.io out (which I use on my blog) and switching to use https://github.com/material-components/material-components-web-components. Using web components within React does seem a little odd, but this library does provide everything I expect this project need in order for it to feel like an app while being a PWA.  
+- https://material.io/components/navigation-drawer#usage
 
 # 2021-04-26
 - After researching e2e encryption implementations, I'm going to avoid getting into that right now, it would be nice to have, but this isn't meant to be a secure messaging app, so the overhead doesn't seem worthwhile right now, especially with this being web-first rather than mobile-first.

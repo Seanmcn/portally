@@ -3,54 +3,181 @@ import './Layout.css';
 import '@material/mwc-top-app-bar-fixed';
 import '@material/mwc-icon-button';
 import '@material/mwc-drawer';
-import { Helmet } from 'react-helmet';
+// eslint-disable-next-line no-unused-vars
+import Helmet from 'react-helmet';
+import { NavLink } from 'react-router-dom';
 
 class MobileLayout extends React.Component {
   constructor(props) {
     super(props);
-    this.refDrawer = React.createRef();
-    this.refTopNavBar = React.createRef();
+    this.state = {
+      navDrawerOpen: true,
+      navDrawerCondensed: false,
+    };
+    this.toggleNavMenu = this.toggleNavMenu.bind(this);
+    this.toggleNavDrawerCondensed = this.toggleNavDrawerCondensed.bind(this);
   }
 
-  componentDidMount() {
-    this.refDrawer.current.hasHeader = true;
-    this.refTopNavBar.current.centerTitle = true;
+  toggleNavMenu() {
+    this.setState((state) => ({ navDrawerOpen: !state.navDrawerOpen, navDrawerCondensed: false }));
   }
 
-  onClickMenuIcon() {
-    this.refDrawer.current.open = !this.refDrawer.current.open;
+  toggleNavDrawerCondensed() {
+    this.setState((state) => ({ navDrawerCondensed: !state.navDrawerCondensed }));
   }
 
   render() {
-    console.log(this.refDrawer.current);
+    const { navDrawerOpen, navDrawerCondensed } = this.state;
+    const isNavDrawerClosed = navDrawerOpen ? '' : 'is-closed';
+    const isNavDrawerCondensed = navDrawerCondensed ? 'is-condensed' : '';
     return (
       <>
-        <Helmet>
-          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet" />
-        </Helmet>
+        <Helmet
+          link={[
+            {
+              rel: 'stylesheet',
+              href: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
+            },
+            {
+              rel: 'stylesheet',
+              href: 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css',
+            },
+          ]}
+        />
+        <>
 
-        <mwc-drawer type="modal" ref={this.refDrawer}>
-          <span slot="title">Drawer Title</span>
-          <span slot="subtitle">subtitle</span>
-          <div>
-            <p>Drawer content!</p>
-            <mwc-icon-button icon="gesture" />
-            <mwc-icon-button icon="gavel" />
-          </div>
-          <div slot="appContent">
-            <mwc-top-app-bar-fixed ref={this.refTopNavBar}>
-              <mwc-icon-button slot="navigationIcon" icon="menu" onClick={this.onClickMenuIcon.bind(this)} />
-              <div slot="title">Portally</div>
-              <mwc-icon-button icon="file_download" slot="actionItems" />
-              <mwc-icon-button icon="print" slot="actionItems" />
-              <mwc-icon-button icon="favorite" slot="actionItems" />
-            </mwc-top-app-bar-fixed>
-            <div>
-              <p>Main Content!</p>
+          <nav className={`navigationDrawer ${isNavDrawerClosed} ${isNavDrawerCondensed}`}>
+            <section className="navigationSection">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              {/* Todo: fix link & anchors */}
+              <button onClick={this.toggleNavDrawerCondensed} type="button" className="navigationDrawerDesktopIcon">
+                <i className="fi fi-nav-icon-a" />
+              </button>
+              <NavLink className="navigationItem" to="/mobile" activeClassName="active">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-home" />
+                </div>
+                <div className="navigationItemString">
+                  Home
+                </div>
+              </NavLink>
+
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-earth" />
+                </div>
+                <div className="navigationItemString">
+                  Explore
+                </div>
+              </a>
+
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-at" />
+                </div>
+                <div className="navigationItemString">
+                  Messages
+                </div>
+              </a>
+
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-persons" />
+                </div>
+                <div className="navigationItemString">
+                  Friends
+                </div>
+              </a>
+
+            </section>
+            <section className="navigationSection">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-unlocked" />
+                </div>
+                <div className="navigationItemString">
+                  Settings
+                </div>
+              </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-database" />
+                </div>
+                <div className="navigationItemString">
+                  Statistics
+                </div>
+              </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-bug" />
+                </div>
+                <div className="navigationItemString">
+                  Report a bug
+                </div>
+              </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a className="navigationItem">
+                <div className="navigationItemIcon">
+                  <i className="fi fi-question" />
+                </div>
+                <div className="navigationItemString">
+                  Help
+                </div>
+              </a>
+
+            </section>
+            {/* <section className="navigationSection"> */}
+            {/*  /!* eslint-disable-next-line jsx-a11y/anchor-is-valid *!/ */}
+            {/*  <a className="navigationItem"> */}
+            {/*    <div className="navigationItemIcon"> */}
+            {/*      <i className="fi fi-user-secret" /> */}
+            {/*    </div> */}
+            {/*    <div className="navigationItemString"> */}
+            {/*      Admin */}
+            {/*    </div> */}
+            {/*  </a> */}
+            {/* </section> */}
+          </nav>
+
+          <div className="appContainer">
+            <div className="appBar">
+              <button onClick={this.toggleNavMenu} type="button" className="appBarIcon navigationDrawerMobileIcon">
+                <i className="fi fi-nav-icon-a" />
+              </button>
+              <div>
+                <h1 className="logoText">Portally</h1>
+              </div>
+              <div>
+                <button type="button" className="appBarIcon">
+                  <i className="fi fi-email" />
+                </button>
+                <button type="button" className="appBarIcon">
+                  <i className="fi fi-bell-alt" />
+                </button>
+                <button type="button" className="appBarIcon">
+                  <i className="fi fi-person" />
+                </button>
+              </div>
+            </div>
+            <div className="appContent">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Perspiciatis numquam, sunt,
+                praesentium quis
+                aliquam saepe unde amet suscipit accusantium voluptate optio vitae
+                earum possimus
+                animi id quo! Iste,
+                sed necessitatibus.
+              </p>
             </div>
           </div>
-        </mwc-drawer>
+        </>
       </>
     );
   }
