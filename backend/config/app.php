@@ -175,6 +175,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        // Laravel IDE helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        // Laravel Messenger (https://github.com/cmgmyr/laravel-messenger)
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
+
     ],
 
     /*

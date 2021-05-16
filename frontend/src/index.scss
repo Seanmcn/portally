@@ -29,3 +29,15 @@ $body-background-color: #f4f4f4;
 body.has-navbar-fixed-top {
   padding-top: 4.25rem
 }
+
+html,body{
+  height:100%;
+}
+
+#root, .container {
+  height: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}

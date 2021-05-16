@@ -18,7 +18,7 @@ class ScreensHome extends React.Component {
                   General
                 </p>
                 <ul className="menu-list">
-                  <li><a>Activity Stream</a></li>
+                  <li><a className="is-active">Activity Stream</a></li>
                   <li><a>Friends</a></li>
                 </ul>
                 <p className="menu-label">
@@ -34,7 +34,7 @@ class ScreensHome extends React.Component {
                 </p>
                 <ul className="menu-list">
                   <li>
-                    <a className="is-active">Groups</a>
+                    <a>Groups</a>
                   </li>
                   <li><a>Invitations</a></li>
                   <li><a>Storage</a></li>

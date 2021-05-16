@@ -8,6 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -35,7 +36,8 @@ class UserController extends Controller
      * Update user info
      *
      * @param Request $request
-     * @throws \Illuminate\Validation\ValidationException
+     * @return Response
+     * @throws ValidationException
      */
     public function updateInfo(Request $request)
     {
@@ -62,7 +64,7 @@ class UserController extends Controller
 
     /**
      * @param Request $request
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function updatePassword(Request $request) {
         $this->validate($request, [

@@ -1,5 +1,5 @@
 {
-  "name": "circle",
+  "name": "portally",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "axios": "^0.20.0",
     "bulma": "^0.9.1",
     "bulma-extensions": "^6.2.7",
+    "dayjs": "^1.10.4",
     "mobx": "^6.1.7",
     "mobx-persist-store": "^0.5.30",
     "mobx-react": "^7.1.0",
