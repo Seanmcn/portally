@@ -1,8 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Footer from './partials/Footer';
-import Header from './partials/Header';
 import ScreensRoot from '../../screens/Router';
+import './Layout.css';
+import NavigationDrawer from './partials/NavigationDrawer';
+import AppBar from './partials/AppBar';
 
 const PrivateLayout = () => (
   <>
@@ -24,13 +25,14 @@ const PrivateLayout = () => (
           href: 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css',
         },
       ]}
-      bodyAttributes={{
-        // class: 'has-navbar-fixed-top',
-      }}
     />
-    <Header />
-    <ScreensRoot />
-    <Footer />
+    <NavigationDrawer />
+    <div className="appContainer">
+      <AppBar />
+      <div className="appContent">
+        <ScreensRoot />
+      </div>
+    </div>
   </>
 );
 

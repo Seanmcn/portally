@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const UIErrorMessages = (props) => {
   const { errors } = props;
+  console.log(JSON.stringify(errors));
   if (!errors) return false;
+  if (typeof errors !== 'object') return false;
 
   const errorMessages = Object.keys(errors)
     .map((key) => errors[key]
