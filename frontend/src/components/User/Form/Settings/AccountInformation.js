@@ -52,7 +52,7 @@ class UserFormSettingsAccountInformation extends React.Component {
 
               <div className="field">
                 <label className="label" htmlFor="name">Name</label>
-                <div className="control">
+                <div className="control has-icons-left has-icons-right">
                   <input
                     type="text"
                     className={this.inputClassNames('name')}
@@ -63,6 +63,11 @@ class UserFormSettingsAccountInformation extends React.Component {
                     onChange={this.handleNameChange}
                     required
                   />
+                  <span className="icon is-small is-left">
+                    <span className="material-icons">
+                      badge
+                    </span>
+                  </span>
                 </div>
               </div>
 
@@ -80,22 +85,31 @@ class UserFormSettingsAccountInformation extends React.Component {
                     required
                   />
                   <span className="icon is-small is-left">
-                    <i className="fas fa-envelope" />
+                    <span className="material-icons">
+                      email
+                    </span>
                   </span>
                 </div>
               </div>
 
               <div className="field">
-                <label className="label" htmlFor="date_of_birth">Date of Birth</label>
-                <input
-                  type="date"
-                  id="date_of_birth"
-                  className={this.inputClassNames('password_confirmation')}
-                  value={values.dateOfBirth}
-                  onChange={this.handleDateOfBirthChange}
-                  autoComplete="bday"
-                  required
-                />
+                <label className="label" htmlFor="date_of_birth">Birthday</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input
+                    type="date"
+                    id="date_of_birth"
+                    className={this.inputClassNames('password_confirmation')}
+                    value={values.dateOfBirth}
+                    onChange={this.handleDateOfBirthChange}
+                    autoComplete="bday"
+                    required
+                  />
+                  <span className="icon is-small is-left">
+                    <span className="material-icons">
+                      cake
+                    </span>
+                  </span>
+                </div>
               </div>
               <div className="control">
                 <button

@@ -1,3 +1,7 @@
+# 2021-05-16
+- Merged feat.mobile-design branch into master now I've decided on direction, re-added Bulma until I get around to redoing the settings page into new design
+- Switched icons over to https://fonts.google.com/icons, should have realised earlier that would be something that exists.
+
 # 2021-05-15
 - https://fontisto.com/icons
 - Have navigation menu working now for mobile/desktop/tablet. Tablet design still needs some work, mainly around automatically entering that mode when screen size is tablet.
