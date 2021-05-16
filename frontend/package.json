@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/mwc-drawer": "^0.21.0",
+    "@material/mwc-icon-button": "^0.21.0",
+    "@material/mwc-top-app-bar-fixed": "^0.21.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
-    "bulma": "^0.9.1",
-    "bulma-extensions": "^6.2.7",
     "dayjs": "^1.10.4",
     "mobx": "^6.1.7",
     "mobx-persist-store": "^0.5.30",
@@ -20,8 +21,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "styled-components": "^5.2.1"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",

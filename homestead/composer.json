@@ -1,5 +1,7 @@
 {
+    "name": "portally",
+    "description": "Homestead setup for Portally",
     "require-dev": {
-        "laravel/homestead": "^11.2"
+        "laravel/homestead": "^12.2"
     }
 }
