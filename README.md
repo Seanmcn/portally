@@ -1,5 +1,5 @@
-# Portally
-WIP project: Online portal / social network
+# WIP - Portally
+Online portal / social network
 
 ## Goals
 - Privacy focused.
@@ -10,6 +10,13 @@ WIP project: Online portal / social network
 
 ## Progress
 Working toward an MVP release, you can see progress on the [MVP Release project board](https://github.com/Seanmcn/circle/projects/1)
+
+## Setup
+```bash
+(cd backend && composer install)
+(cd frontend && yarn install)
+(cd homestead && composer install && vagrant up)
+```
 
 ## Technology Used
 - [Laravel](https://laravel.com/)
