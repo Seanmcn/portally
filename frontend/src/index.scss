@@ -1,21 +1,17 @@
-// Initial variables
-//@import "../node_modules/bulma/sass/utilities/initial-variables";
-//@import "../node_modules/bulma/sass/utilities/functions";
+* {
+  box-sizing: border-box
+}
 
-// Custom Settings
-$family-sans-serif: "Nunito", sans-serif;
-//$primary: $purple;
-//$link: $pink;
-$widescreen-enabled: true;
-$fullhd-enabled: true;
+html {
+  font-size: 100%;
+  font-family: "Roboto", "Noto", sans-serif;
+}
 
-// Update some of Bulma's component variables
-$body-background-color: #f4f4f4;
+body {
+  background: #f9f9f9;
+}
 
-//$navbar-padding-vertical: 2rem;
-
-// Rest of Bulma
-//@import '../node_modules/bulma/bulma';
+// todo: are below needed?
 
 .navbarLogo {
   height: 4rem;
@@ -42,3 +38,5 @@ html,body{
 .fullHeight {
   height: 100%;
 }
+
+

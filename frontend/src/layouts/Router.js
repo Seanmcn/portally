@@ -6,7 +6,6 @@ import {
 
 import PublicLayout from './public/Layout';
 import PrivateLayout from './private/Layout';
-import MobileLayout from './mobile/Layout';
 
 const LayoutsRoute = () => (
   <Router>
@@ -14,7 +13,6 @@ const LayoutsRoute = () => (
       <Route exact path={['/user/reset-password', '/user/login', '/user/register', '/user/forgot-password']}>
         <PublicLayout />
       </Route>
-      <Route path="/mobile" component={MobileLayout} />
       <Route path="*" component={PrivateLayout} />
     </Switch>
   </Router>

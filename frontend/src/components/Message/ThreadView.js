@@ -62,6 +62,7 @@ class MessageThreadView extends React.Component {
   }
 }
 
+// todo: why have i put this here?
 ThreadPreview.defaultProps = {
   threadId: 0,
 };
