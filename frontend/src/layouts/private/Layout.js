@@ -22,7 +22,7 @@ const PrivateLayout = () => (
         },
         {
           rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css',
+          href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
         },
       ]}
     />

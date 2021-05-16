@@ -15,12 +15,16 @@ class NavigationDrawer extends React.Component {
       <nav className={`navigationDrawer ${isNavDrawerClosed} ${isNavDrawerCondensed}`}>
         <section className="navigationSection">
           <button onClick={UserInterfaceStore.toggleNavDrawerCondensed} type="button" className="navigationDrawerDesktopIcon">
-            <i className="fi fi-nav-icon-a" />
+            <span className="material-icons">
+              menu
+            </span>
           </button>
 
           <NavLink className="navigationItem" exact to="/" activeClassName="active">
             <div className="navigationItemIcon">
-              <i className="fi fi-home" />
+              <span className="material-icons">
+                home
+              </span>
             </div>
             <div className="navigationItemString">
               Home
@@ -30,7 +34,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navigationItem">
             <div className="navigationItemIcon">
-              <i className="fi fi-earth" />
+              <span className="material-icons">
+                explore
+              </span>
             </div>
             <div className="navigationItemString">
               Explore
@@ -39,7 +45,9 @@ class NavigationDrawer extends React.Component {
 
           <NavLink className="navigationItem" to="/messages" activeClassName="active">
             <div className="navigationItemIcon">
-              <i className="fi fi-at" />
+              <span className="material-icons">
+                email
+              </span>
             </div>
             <div className="navigationItemString">
               Messages
@@ -49,7 +57,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navigationItem">
             <div className="navigationItemIcon">
-              <i className="fi fi-persons" />
+              <span className="material-icons">
+                people
+              </span>
             </div>
             <div className="navigationItemString">
               Friends
@@ -61,7 +71,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <NavLink className="navigationItem" to="/user/settings" activeClassName="active">
             <div className="navigationItemIcon">
-              <i className="fi fi-unlocked" />
+              <span className="material-icons">
+                settings
+              </span>
             </div>
             <div className="navigationItemString">
               Settings
@@ -70,7 +82,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navigationItem">
             <div className="navigationItemIcon">
-              <i className="fi fi-database" />
+              <span className="material-icons">
+                analytics
+              </span>
             </div>
             <div className="navigationItemString">
               Statistics
@@ -79,7 +93,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navigationItem">
             <div className="navigationItemIcon">
-              <i className="fi fi-bug" />
+              <span className="material-icons">
+                bug_report
+              </span>
             </div>
             <div className="navigationItemString">
               Report a bug
@@ -88,7 +104,9 @@ class NavigationDrawer extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navigationItem">
             <div className="navigationItemIcon">
-              <i className="fi fi-question" />
+              <span className="material-icons">
+                help_center
+              </span>
             </div>
             <div className="navigationItemString">
               Help

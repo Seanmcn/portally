@@ -9,20 +9,28 @@ class NavigationDrawer extends React.Component {
     return (
       <div className="appBar">
         <button onClick={UserInterfaceStore.toggleNavDrawer} type="button" className="appBarIcon navigationDrawerMobileIcon">
-          <i className="fi fi-nav-icon-a" />
+          <span className="material-icons">
+            menu
+          </span>
         </button>
         <div>
           <h1 className="logoText">Portally</h1>
         </div>
         <div>
           <button type="button" className="appBarIcon">
-            <i className="fi fi-email" />
+            <span className="material-icons">
+              email
+            </span>
           </button>
           <button type="button" className="appBarIcon">
-            <i className="fi fi-bell-alt" />
+            <span className="material-icons">
+              notifications
+            </span>
           </button>
           <button type="button" className="appBarIcon">
-            <i className="fi fi-person" />
+            <span className="material-icons">
+              account_circle
+            </span>
           </button>
         </div>
       </div>
