@@ -10,7 +10,7 @@ import PrivateLayout from './private/Layout';
 const LayoutsRoute = () => (
   <Router>
     <Switch>
-      <Route exact path={['/user/reset-password', '/user/login', '/user/register', '/user/forgot-password']}>
+      <Route exact path={['/', '/user/reset-password', '/user/login', '/user/register', '/user/forgot-password']}>
         <PublicLayout />
       </Route>
       <Route path="*" component={PrivateLayout} />
