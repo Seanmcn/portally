@@ -3,41 +3,58 @@
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
-  margin-bottom: 30px; }
-  .chatMessage .messageText {
+  margin-bottom: 30px;
+
+  .messageText {
     display: block;
     width: 100%;
     font-size: .8rem;
-    padding: 1em; }
-  .chatMessage .isReceived {
-    margin-top: -16px !important; }
-  .chatMessage .isSent {
-    margin-top: -16px !important; }
-  .chatMessage img {
+    padding: 1em;
+    //color: #999;
+  }
+
+  .isReceived {
+    margin-top: -16px !important;
+  }
+
+  .isSent {
+    margin-top: -16px !important;
+
+
+  }
+  img {
     display: block;
     height: 50px;
     width: 50px;
-    border-radius: 50%; }
-
+    border-radius: 50%;
+  }
+}
 .chatMessage.isSent img {
-  margin-left: 20px; }
+  margin-left: 20px;
+}
 
 .chatMessage.isReceived img {
-  margin-right: 20px; }
+  margin-right: 20px;
+}
+
 
 .messageBlock span {
-  font-size: small; }
+  font-size: small;
+}
 
 .chatMessage.isReceived .messageText {
   color: #fafafa;
-  background-color: #5082c3; }
+  background-color: #5082c3;
+}
 
 .chatMessage.isSent {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse; }
+  flex-direction: row-reverse;
+}
 
 .chatMessage.isSent .messageText {
   color: #757a91;
-  background-color: #fff; }
+  background-color: #fff;
+}

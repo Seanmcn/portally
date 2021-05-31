@@ -4,6 +4,11 @@
   box-sizing: border-box
 }
 
+html,body{
+  height:100%;
+  margin: 0;
+}
+
 html {
   font-size: 100%;
   font-family: "Roboto", "Noto", sans-serif;
@@ -13,36 +18,11 @@ body {
   background: #f9f9f9;
 }
 
-// todo: are below needed?
-
 .navbarLogo {
   height: 4rem;
   width: auto;
 }
 
-.containerLogin {
-  max-width: 25rem;
-}
-
-body.has-navbar-fixed-top {
-  padding-top: 4.25rem
-}
-
-html,body{
-  height:100%;
-  margin: 0;
-}
-
 #root, .container {
   height: 100%;
 }
-
-.fullHeight {
-  height: 100%;
-}
-
-
-//h1 {
-//  font-size: 1.75rem;
-//  font-weight:400;
-//}

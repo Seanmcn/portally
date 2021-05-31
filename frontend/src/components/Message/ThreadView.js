@@ -1,8 +1,7 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
 import { PropTypes as ReactPropTypes } from 'prop-types';
-import ThreadPreview from './ThreadPreview';
-import MessageSingle from './MessageSingle';
+import MessageSingle from './Single';
 import './ThreadView.css';
 
 class MessageThreadView extends React.Component {
@@ -33,7 +32,7 @@ class MessageThreadView extends React.Component {
       return null;
     }
     return (
-      <div className="chatWrapper">
+      <div className="chatWrapper messageMainView">
         <div className="chatBody">
           <div className="chatBodyInner">
             {messages.map((message) => (
@@ -45,16 +44,9 @@ class MessageThreadView extends React.Component {
             ))}
           </div>
           <div className="chatActions">
-            <div className="chatActionInner">
-              <div className="control">
-                <textarea rows="1" className="chatTextArea" />
-                <div className="dropdown">
-                  <div>
-                    <div className="chatAddButton"><i className="fas fa-plus-square" /></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <span className="material-icons chatActionAdd">add</span>
+            <textarea rows="1" className="chatActionTextArea" />
+            <span className="material-icons chatActionSend">send</span>
           </div>
         </div>
       </div>
@@ -63,9 +55,9 @@ class MessageThreadView extends React.Component {
 }
 
 // todo: why have i put this here?
-ThreadPreview.defaultProps = {
-  threadId: 0,
-};
+// MessageThreadView.defaultProps = {
+//   threadId: 0,
+// };
 
 MessageThreadView.propTypes = {
   MessageStore: PropTypes.observableObject.isRequired,

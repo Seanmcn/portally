@@ -1,8 +1,9 @@
 import React from 'react';
 import { inject, observer, PropTypes } from 'mobx-react';
-import MessageThreadPreview from './ThreadPreview';
+import MessageThreadLink from './ThreadLink';
+import './ThreadLinkList.scss';
 
-class MessageThreads extends React.Component {
+class ThreadLinkList extends React.Component {
   componentDidMount() {
     const { MessageStore } = this.props;
     MessageStore.get();
@@ -13,15 +14,15 @@ class MessageThreads extends React.Component {
     const { values } = MessageStore;
     const { threads } = values;
     return (
-      <ul>
-        {threads.map((object) => <MessageThreadPreview thread={object} key={object.id} />)}
-      </ul>
+      <div className="threadPreviewContainer messageThreadView">
+        {threads.map((object) => <MessageThreadLink thread={object} key={object.id} />)}
+      </div>
     );
   }
 }
 
-MessageThreads.propTypes = {
+ThreadLinkList.propTypes = {
   MessageStore: PropTypes.observableObject.isRequired,
 };
 
-export default inject('MessageStore')(observer(MessageThreads));
+export default inject('MessageStore')(observer(ThreadLinkList));

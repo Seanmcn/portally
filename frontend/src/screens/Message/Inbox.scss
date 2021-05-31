@@ -1,0 +1,15 @@
+.flex-container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.messageDetailsView {
+  width: 20%;
+  display: none;
+  @media (min-width: 1281px) {
+    display: block;
+  }
+}
+

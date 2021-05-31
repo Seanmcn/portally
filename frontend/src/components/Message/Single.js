@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { NavLink } from 'react-router-dom';
-import './MessageSingle.css';
+import './Single.scss';
 import dayjs from 'dayjs';
 
 const MessageSingle = (props) => {
@@ -20,10 +19,7 @@ const MessageSingle = (props) => {
     </div>
   );
 };
-// MessageSingle.defaultProps = {
-//   thread: null,
-// };
-//
+
 MessageSingle.propTypes = {
   message: PropTypes.object.isRequired,
   userId: PropTypes.number.isRequired,
