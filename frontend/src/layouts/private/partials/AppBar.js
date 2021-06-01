@@ -27,7 +27,7 @@ class NavigationDrawer extends React.Component {
               notifications
             </span>
           </button>
-          <button type="button" className="appBarIcon">
+          <button onClick={UserInterfaceStore.toggleAccountMenu} type="button" className="appBarIcon">
             <span className="material-icons">
               account_circle
             </span>

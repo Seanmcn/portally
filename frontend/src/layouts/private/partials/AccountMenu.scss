@@ -1,0 +1,36 @@
+.accountMenu{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  background: white;
+  //width: 10em;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  padding-top: 1em;
+  padding-right: 0.5em;
+  &.is-closed {
+    margin-top: -50px;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+.accountMenuItem {
+  all:unset;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #030303;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  padding: 0.5em 1.5em;
+  &:hover{
+    background: #f2f2f2;
+    cursor:pointer;
+  }
+}

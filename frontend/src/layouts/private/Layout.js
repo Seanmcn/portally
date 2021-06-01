@@ -7,6 +7,7 @@ import ScreensRoot from '../../screens/Router';
 import NavigationDrawer from './partials/NavigationDrawer';
 import AppBar from './partials/AppBar';
 import './Layout.css';
+import AccountMenu from './partials/AccountMenu';
 
 class PrivateLayout extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class PrivateLayout extends React.Component {
           ]}
         />
         <NavigationDrawer />
+        <AccountMenu />
         <div className="appContainer">
           <AppBar />
           <div className="appContent">

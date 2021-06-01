@@ -23,6 +23,7 @@ class UserInterfaceStore {
     values = {
       navDrawerOpen: true,
       navDrawerCondensed: false,
+      accountMenuOpen: false,
     };
 
     constructor() {
@@ -36,6 +37,10 @@ class UserInterfaceStore {
 
     toggleNavDrawerCondensed() {
       this.values.navDrawerCondensed = !this.values.navDrawerCondensed;
+    }
+
+    toggleAccountMenu() {
+      this.values.accountMenuOpen = !this.values.accountMenuOpen;
     }
 }
 
