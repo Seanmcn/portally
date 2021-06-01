@@ -21,6 +21,9 @@ function writeStore(name, content) {
 
 class UserInterfaceStore {
     values = {
+      isDesktop: false,
+      isTablet: false,
+      isMobile: false,
       navDrawerOpen: true,
       navDrawerCondensed: false,
       accountMenuOpen: false,
@@ -31,7 +34,6 @@ class UserInterfaceStore {
     }
 
     toggleNavDrawer() {
-      this.values.navDrawerCondensed = false;
       this.values.navDrawerOpen = !this.values.navDrawerOpen;
     }
 
@@ -41,6 +43,33 @@ class UserInterfaceStore {
 
     toggleAccountMenu() {
       this.values.accountMenuOpen = !this.values.accountMenuOpen;
+    }
+
+    setIsDesktop(value) {
+      this.values.isDesktop = value;
+    }
+
+    setIsTablet(value) {
+      this.values.isTablet = value;
+    }
+
+    setIsMobile(value) {
+      this.values.isMobile = value;
+    }
+
+    resetBasedOnDevice() {
+      if (this.values.isMobile) {
+        this.values.navDrawerOpen = false;
+        this.values.navDrawerCondensed = false;
+      }
+      if (this.values.isTablet) {
+        this.values.navDrawerOpen = true;
+        this.values.navDrawerCondensed = true;
+      }
+      if (this.values.isDesktop) {
+        this.values.navDrawerOpen = true;
+        this.values.navDrawerCondensed = false;
+      }
     }
 }
 

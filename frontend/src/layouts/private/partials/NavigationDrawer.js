@@ -11,6 +11,7 @@ class NavigationDrawer extends React.Component {
 
     const isNavDrawerClosed = navDrawerOpen ? '' : 'is-closed';
     const isNavDrawerCondensed = navDrawerCondensed ? 'is-condensed' : '';
+
     return (
       <nav className={`navigationDrawer ${isNavDrawerClosed} ${isNavDrawerCondensed}`}>
         <section className="navigationSection">

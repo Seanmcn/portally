@@ -8,6 +8,7 @@ import NavigationDrawer from './partials/NavigationDrawer';
 import AppBar from './partials/AppBar';
 import './Layout.css';
 import AccountMenu from './partials/AccountMenu';
+import StoreWindowSize from './helpers/StoreWindowSize';
 
 class PrivateLayout extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class PrivateLayout extends React.Component {
             },
           ]}
         />
+        <StoreWindowSize />
         <NavigationDrawer />
         <AccountMenu />
         <div className="appContainer">
@@ -58,8 +60,3 @@ PrivateLayout.propTypes = {
 };
 
 export default inject('UserStore')(observer(PrivateLayout));
-
-// const PrivateLayout = () => (
-// );
-//
-// export default PrivateLayout;
