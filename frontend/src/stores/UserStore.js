@@ -5,6 +5,7 @@ import {
   StorageAdapter,
 } from 'mobx-persist-store';
 
+import dayjs from 'dayjs';
 import api from '../utils/api';
 
 function readStore(name) {
@@ -25,6 +26,8 @@ class UserStore {
   inProgress = false;
 
   authenticated = false;
+
+  authenticatedTime = undefined;
 
   registered = false;
 
@@ -157,6 +160,7 @@ class UserStore {
         })
           .then(action(() => {
             this.authenticated = true;
+            this.authenticatedTime = dayjs();
           }))
           .catch(action((err) => {
             this.errors = err.message;
@@ -210,6 +214,7 @@ class UserStore {
     })).then(action(() => {
       this.errors = undefined;
       this.authenticated = false;
+      this.authenticatedTime = undefined;
     })).finally(action(() => {
       this.inProgress = false;
     }));
@@ -258,11 +263,23 @@ class UserStore {
         this.errors = err.response.data.errors;
       }));
   }
+
+  // todo: change to checking if authorised on API / cover with initial API call.
+  checkAuthTime() {
+    if (this.authenticatedTime === undefined) {
+      this.authenticated = false;
+      return;
+    }
+    if (dayjs() >= dayjs(this.authenticatedTime).add(2, 'hour')) {
+      this.authenticated = false;
+      this.authenticatedTime = undefined;
+    }
+  }
 }
 
 export default persistence({
   name: 'UserStore',
-  properties: ['authenticated'],
+  properties: ['authenticated', 'authenticatedTime'],
   adapter: new StorageAdapter({
     read: readStore,
     write: writeStore,

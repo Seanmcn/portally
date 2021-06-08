@@ -11,9 +11,15 @@ import AccountMenu from './partials/AccountMenu';
 import StoreWindowSize from './helpers/StoreWindowSize';
 
 class PrivateLayout extends React.Component {
+  componentDidMount() {
+    const { UserStore } = this.props;
+    UserStore.checkAuthTime();
+  }
+
   render() {
     const { UserStore } = this.props;
     const { authenticated } = UserStore;
+
     if (!authenticated) {
       return (
         <Redirect to="/user/login" />
